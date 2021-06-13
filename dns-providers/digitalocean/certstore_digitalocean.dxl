@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_12_0.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='12.0' replicaid='002585970E81AAAA'
+ path='CN=led/O=Redwood-Lab!!certstore.nsf' title='Certificate Store' fromtemplate='StdCertificateStore'
+ maintainunread='false' increasemaxfields='true' copyprofiledocswithdesign='true'>
+<databaseinfo dbid='002585A600465F3A' odsversion='55' diskspace='4194304'
+ percentused='85.3271484375' numberofdocuments='66'><datamodified><datetime
+>20210613T041137,13+00</datetime></datamodified><designmodified><datetime
+>20210524T145326,24+00</datetime></designmodified></databaseinfo>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='40fe' unid='5BE891C82208B92E002586CC007311FB' sequence='1'>
+<created><datetime>20210505T205652,43+00</datetime></created>
+<modified><datetime>20210505T205652,71+00</datetime></modified>
+<revised><datetime>20210505T205652,70+00</datetime></revised>
+<lastaccessed><datetime>20210505T205652,70+00</datetime></lastaccessed>
+<addedtofile><datetime>20210505T205652,70+00</datetime></addedtofile></noteinfo>
+<textproperties>
+<textproperty propid='0' language='EN'/></textproperties>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run><span propid='0' regionid='1'><run
+><font size='9pt' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/></run></span></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>Digital Ocean provides a free basic DNS service, which can be also used to delegate sub-domains by creating the domain and pointing NS records for this sub-domain to their DNS server</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>The API is very clean and is a good example how to implement APIs</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>The only parameters you have to define are the sub-domain added to the </run><run
+><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/>Registered Domain</run><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/> field and an API Token configured in the  </run><run
+><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/>Authorization Token </run><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>field</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<pardef id='2' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='2'><region regionid='1'/></par>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0201in' refwidth='9.8431in'><tablecolumn width='1.9688in'/><tablecolumn
+ width='7.8743in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='3' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>Registered Domain:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='4' leftmargin='0' rightmargin='7.8063in' keepwithnext='true' keeptogether='true'/>
+<par def='4'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>acme.lab</run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell columnspan='2' borderwidth='0px'>
+<pardef id='6' leftmargin='0' spacebefore='2' spaceafter='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='6'><region regionid='1'><run><font size='12pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20' color='#191919'/>Configuration Values</run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<pardef id='7' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='7'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>Authorization Token:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<pardef id='8' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='8'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>xyz</run></region></par></tablecell></tablerow></table>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='1'><region regionid='1' end='true'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region><run><font
+ size='9pt' name='Helvetica Neue' pitch='variable' truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>42</number></item>
+<item name='EnableTracing'><text>1</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text/></item>
+<item name='ReqAddHttpType'><text>P</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text>D</text></item>
+<item name='Comments'><richtext>
+<pardef id='9' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='9'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>DigitalOcean</text></item>
+<item name='ProviderName'><text>DigitalOcean, LLC</text></item>
+<item name='Website'><text>https://cloud.digitalocean.com</text></item>
+<item name='DocumentationURL'><text>https://developers.digitalocean.com/documentation/v2/</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>Daniel Nashed</text></item>
+<item name='ReferenceURL'><text/></item>
+<item name='StatusFormula'><text>@if (retJSON_Add.domain_record.id != ""; 200; 400)</text></item>
+<item name='cfg_URL'><text>https://api.digitalocean.com/v2/domains</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text/></item>
+<item name='ReqQryAddHeaderFormula'><text/></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>cfg_URL + "/" + param_RegisteredDomain +"/records"</text></item>
+<item name='ReqAddHeaderFormula'><text>( "Content-Type: application/json" ) : ("Authorization: Bearer " + cfg_AuthToken )</text></item>
+<item name='ReqAddPostDataFormula'><text>'{"type":"TXT","name":"' + param_DnsTxtName+ '.","data":"' + param_DnsTxtValue + '","ttl":30}'</text></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text>ID_TXT:= @Text(retJSON_Add.domain_record.id); @if (ID_TXT= ""; ""; cfg_URL + "/" + param_RegisteredDomain + "/records/" + ID_TXT)</text></item>
+<item name='ReqDelHeaderFormula'><text>( "Content-Type: application/json" ) : ("Authorization: Bearer " + cfg_AuthToken )</text></item>
+<item name='ReqDelPostDataFormula'><text/></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentNameAdd'><text/></item>
+<item name='AgentNameDel'><text/></item></document>
+</database>
+

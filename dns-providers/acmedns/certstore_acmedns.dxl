@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_11_0_1.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='11.0' maintenanceversion='1.0'
+ replicaid='C12584940E687082' path='CN=pluto/O=NotesLab!!certstore.nsf' title='Certificate Store'
+ fromtemplate='StdCertificateStore' maintainunread='false' increasemaxfields='true'
+ copyprofiledocswithdesign='true' showinopendialog='false' advancedtemplate='true'>
+<databaseinfo dbid='C125868300271BA2' odsversion='55' diskspace='2883584'
+ percentused='92.0987215909091' numberofdocuments='45'><datamodified><datetime
+ dst='true'>20210419T224811,86+02</datetime></datamodified><designmodified
+><datetime dst='true'>20210420T065108,71+02</datetime></designmodified></databaseinfo>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='9be' unid='42164CA02C4DD8A3C125868C005B567B' sequence='1'>
+<created><datetime>20210302T173739,15+01</datetime></created>
+<modified><datetime>20210302T173739,24+01</datetime></modified>
+<revised><datetime>20210302T173739,23+01</datetime></revised>
+<lastaccessed><datetime>20210302T173739,23+01</datetime></lastaccessed>
+<addedtofile><datetime>20210302T173739,23+01</datetime></addedtofile></noteinfo>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>ACME-DNS is a simple DNS server project intended to host TXT records for ACME DNS validation.</run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>The server can be used with DNS name server delegation for a validation sub-domain in combination with CNAMEs.</run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>The server is available from github or can be deployed as a Docker container.</run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>It provides a simple registration API for validation sub-domain records, which can be used with a simple API to create DNS TXT records for ACME challenge validation.</run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>ACME-DNS is a project which needs a provider configuration for each ACME-DNS host.</run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>The configuration URL needs to be defined for each server.</run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>The parameters required for a DNS provider document are:</run></par>
+<pardef id='2' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='2'/>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0201in' refwidth='1.9688in'><tablecolumn width='1.9688in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='4' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>DNS Zone:</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Username:</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Password:</run></par></tablecell></tablerow></table>
+<par def='2'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Each CNAME should point to a separate account.</run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>5</number></item>
+<item name='EnableTracing'><text>1</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text/></item>
+<item name='ReqAddHttpType'><text>P</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text/></item>
+<item name='Comments'><richtext>
+<pardef id='1' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>acmedns.domino-lab.net</text></item>
+<item name='ProviderName'><text>acme-dns</text></item>
+<item name='Website'><text>https://github.com/joohoi/acme-dns</text></item>
+<item name='DocumentationURL'><text>https://github.com/joohoi/acme-dns</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>HCL</text></item>
+<item name='ReferenceURL'><text/></item>
+<item name='StatusFormula'><text>@if (retJSON_Add.txt = param_DnsTxtValue; 200; 400)</text></item>
+<item name='cfg_URL'><text>https://auth.mydomain.com:444</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text/></item>
+<item name='ReqQryAddHeaderFormula'><text/></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>cfg_URL +"/update"</text></item>
+<item name='ReqAddHeaderFormula'><text>("X-Api-User: " + cfg_UserName) : ("X-Api-Key: " + cfg_Password)</text></item>
+<item name='ReqAddPostDataFormula'><text>'{"subdomain": "' + cfg_DnsZone + '", "txt": "' + param_DnsTxtValue + '"}'</text></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text/></item>
+<item name='ReqDelHeaderFormula'><text/></item>
+<item name='ReqDelPostDataFormula'><text/></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentNameAdd'><text/></item>
+<item name='AgentNameDel'><text/></item></document>
+</database>
+
