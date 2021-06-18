@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_11_0_1.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='11.0' maintenanceversion='1.0'
+ fromtemplate='StdCertificateStore' maintainunread='false' increasemaxfields='true'
+ copyprofiledocswithdesign='true' advancedtemplate='true'>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='91e' unid='57360A417A5EC1F1002586D600299459' sequence='8'>
+<created><datetime>20210515T073409,53+00</datetime></created>
+<modified><datetime dst='true'>20210518T220215,28+02</datetime></modified>
+<revised><datetime>20210516T112338,53+00</datetime></revised>
+<lastaccessed><datetime dst='true'>20210518T220215,27+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20210518T220215,27+02</datetime></addedtofile></noteinfo>
+<revisions><datetime>20210515T073410,56+00</datetime><datetime>20210516T085133,96+00</datetime><datetime
+>20210516T085703,48+00</datetime><datetime>20210516T100246,57+00</datetime><datetime
+>20210516T110413,91+00</datetime><datetime>20210516T111253,11+00</datetime><datetime
+>20210516T112040,68+00</datetime></revisions>
+<textproperties>
+<textproperty propid='0' language='EN'/></textproperties>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run><span propid='0'><run><font size='9pt'/></run></span><span
+ propid='0' regionid='1'/></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/>Let's Encrypt Pebble is a full ACME server implementation.</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/>It is designed for testing without the need for external services.</run></region></par>
+<pardef id='2' leftmargin='0' tabs='L0.5000in L1in L1.5000in L2in L2.5000in L3in L3.5000in L4in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='2'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' style='bold'/>Pebble cannot be used for production!</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/>By design Pebble will drop </run><run
+><font size='9pt' style='underline'/>all</run><run><font size='9pt'/> of its state between invocations and will </run><run
+><font size='9pt' style='underline'/>randomize keys/certificates</run><run
+><font size='9pt'/> used for issuance.</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/>Therefore you have to re-confiure the following settings every time Pebble is restarted:</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<pardef id='3' leftmargin='0.2500in' linespacing='1.5' list='bullet' tabs='L0.5000in L1in L1.5000in L2in L2.5000in L3in L3.5000in L4in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='3'><region regionid='1'><run><font size='9pt'/>ACME Account (remove the </run><run
+><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/>ACME KID"</run><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>)</run></region></par>
+<pardef id='4' leftmargin='0.2500in' list='bullet' tabs='L0.5000in L1in L1.5000in L2in L2.5000in L3in L3.5000in L4in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='4'><region regionid='1'><run><font size='9pt'/>Trusted root for the CA<break
+/>You find the trusted root at </run><urllink showborder='false' href='https://0.0.0.0:15000/roots/0'><run
+><font size='9pt' color='system'/>https://acme.yourdomain.com:15000/roots/0</run></urllink><run
+><font size='9pt'/> ).<break/>Just import the trusted root PEM into the trusted roots</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/>Pebble can be setup using a Docker image and will work either for</run></region></par>
+<pardef id='5' leftmargin='0' linespacing='1.5' tabs='L0.5000in L1in L1.5000in L2in L2.5000in L3in L3.5000in L4in'
+ keepwithnext='true' keeptogether='true'/>
+<par def='5'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='3'><region regionid='1'><run><font size='9pt'/>HTTP-01 challenges when the server name can be resolved in intranet </run></region></par>
+<par def='3'><region regionid='1'><run><font size='9pt'/>DNS-01 challenges in combination with the challenge test server.</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='2'><region regionid='1' end='true'><run><font size='9pt'/>In order to use DNS-01 challenges you have to ensure the </run><run
+><font size='9pt' style='bold'/>Request URL</run><run><font size='9pt'/> defined on the "Operations" tab points to the server hosting the Pebble image.<break
+/><break/>Running Pebble also allows you to understand the flows in detail and to troubleshoot.<break
+/>The Pebble server and the Pebble challenge test servers provider server side logging.</run></region><run
+><font size='9pt' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>10</number></item>
+<item name='EnableTracing'><text>1</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text/></item>
+<item name='ReqAddHttpType'><text>P</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text/></item>
+<item name='Comments'><richtext>
+<pardef id='6' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='6'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>Pebble</text></item>
+<item name='ProviderName'><text>Let's Encrypt Pebble</text></item>
+<item name='Website'><text>https://github.com/letsencrypt/pebble</text></item>
+<item name='DocumentationURL'><text>https://github.com/letsencrypt/pebble/blob/master/README.md</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>Daniel Nashed</text></item>
+<item name='ReferenceURL'><text/></item>
+<item name='StatusFormula'><text>ret_AddStatus</text></item>
+<item name='cfg_URL'><text>http://127.0.0.1:8055/set-txt</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text/></item>
+<item name='ReqQryAddHeaderFormula'><text/></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>cfg_URL</text></item>
+<item name='ReqAddHeaderFormula'><text/></item>
+<item name='ReqAddPostDataFormula'><text>'{"host":"' + param_DnsTxtName + '.", "value": "' + param_DnsTxtValue +'"}'</text></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text/></item>
+<item name='ReqDelHeaderFormula'><text/></item>
+<item name='ReqDelPostDataFormula'><text/></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentNameAdd'><text/></item>
+<item name='AgentNameDel'><text/></item></document>
+
+<document form='DnsProvider'>
+<noteinfo noteid='932' unid='1ED894ECE6036263002586D60029A856' sequence='1'>
+<created><datetime>20210515T073500,70+00</datetime></created>
+<modified><datetime dst='true'>20210518T220215,40+02</datetime></modified>
+<revised><datetime>20210515T073501,69+00</datetime></revised>
+<lastaccessed><datetime dst='true'>20210518T220215,39+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20210518T220215,39+02</datetime></addedtofile></noteinfo>
+<item name='Status'><text>1</text></item>
+<item name='Comments'><richtext>
+<pardef id='1' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='RegisteredDomain'><text>pebble.lab</text></item>
+<item name='AccountName'><text>pebble</text></item>
+<item name='DnsProviderConfigName' sign='true'><text>Pebble</text></item>
+<item name='cfg_DnsZone'><text/></item>
+<item name='cfg_UserName'><text/></item>
+<item name='cfg_InternetAddress'><text/></item>
+<item name='cfg_Password' seal='true'><text/></item>
+<item name='cfg_AuthKey' seal='true'><text/></item>
+<item name='cfg_AuthToken' seal='true'><text/></item>
+<item name='cfg_CustomValue'><text/></item></document>
+
+<document form='AcmeAccount'>
+<noteinfo noteid='a62' unid='72998440DE750D5DC12586D9006E49C5' sequence='1'>
+<created><datetime dst='true'>20210518T220438,45+02</datetime></created>
+<modified><datetime dst='true'>20210518T220459,37+02</datetime></modified>
+<revised><datetime dst='true'>20210518T220459,36+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20210518T220459,36+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20210518T220459,36+02</datetime></addedtofile></noteinfo>
+<item name='Status'><text/></item>
+<item name='ErrorText'><text/></item>
+<item name='ReqKeySize'><text/></item>
+<item name='ReqKeyCurve'><text>P256</text></item>
+<item name='AcmeAlternateChainSuffix' sign='true'><text/></item>
+<item name='AcmeWebsite'><text/></item>
+<item name='AcmeTermsOfService'><text/></item>
+<item name='AcmeAgreeToServiceTerms'><text>1</text></item>
+<item name='LocalAdmin' names='true' readers='true'><text/></item>
+<item name='Comments'><richtext>
+<pardef id='1' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='AccountName'><text>Pebble</text></item>
+<item name='AcmeDirectoryURL'><text>https://127.0.0.1:14000/dir</text></item>
+<item name='AcmeKid'><text/></item>
+<item name='ReqKeyAlg'><text>E</text></item>
+<item name='ReqKeyRollover'><text/></item>
+<item name='AcmeEmailAddress'><text/></item>
+<item name='AcmeEabKid'><text/></item>
+<item name='AcmeEabHmac'><text/></item></document>
+
+<document form='AcmeAccount'>
+<noteinfo noteid='a66' unid='DA10DA790E9939E4C12586D9006E5725' sequence='2'>
+<created><datetime dst='true'>20210518T220512,69+02</datetime></created>
+<modified><datetime dst='true'>20210518T220547,00+02</datetime></modified>
+<revised><datetime dst='true'>20210518T220546,99+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20210518T220546,99+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20210518T220531,12+02</datetime></addedtofile></noteinfo>
+<revisions><datetime dst='true'>20210518T220531,12+02</datetime></revisions>
+<item name='Status'><text/></item>
+<item name='ErrorText'><text/></item>
+<item name='ReqKeySize'><text/></item>
+<item name='ReqKeyCurve'><text>P256</text></item>
+<item name='AcmeAlternateChainSuffix' sign='true'><text/></item>
+<item name='AcmeWebsite'><text/></item>
+<item name='AcmeTermsOfService'><text/></item>
+<item name='AcmeAgreeToServiceTerms'><text>1</text></item>
+<item name='LocalAdmin' names='true' readers='true'><text/></item>
+<item name='Comments'><richtext>
+<pardef id='1' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='AccountName'><text>Pebble-DNS</text></item>
+<item name='AcmeDirectoryURL'><text>https://127.0.0.1:14053/dir</text></item>
+<item name='AcmeKid'><text/></item>
+<item name='ReqKeyAlg'><text>E</text></item>
+<item name='ReqKeyRollover'><text/></item>
+<item name='AcmeEmailAddress'><text/></item>
+<item name='AcmeEabKid'><text/></item>
+<item name='AcmeEabHmac'><text/></item></document>
+</database>
+

@@ -1,0 +1,37 @@
+version: '3.6'
+services:
+
+# Docker Pebble Lab Environment for Domino V12 CertMgr local testing
+# Version: 1.0
+# Date   : 21.05.2021
+# Author : Daniel Nashed
+
+  pebble:
+
+    image: letsencrypt/pebble:latest
+    container_name: lab-pebble-ca
+    command: pebble -config /pebble-config.json -strict -dnsserver challtestsrv:53
+
+    environment:
+      - PEBBLE_VA_NOSLEEP=1
+      - PEBBLE_AUTHZREUSE=0
+      - PEBBLE_WFE_NONCEREJECT=0
+
+    ports:
+      - 14000:14000  # HTTPS ACME API
+      - 15000:15000  # HTTPS Management API
+
+    volumes:
+      - ./pebble-config.json/:/pebble-config.json
+     # - ./certs:/test/certs/localhost
+     # Optional if you have your own certificate for the web server.
+     # In this case create a cert.pem and key.pem file in the local directory mapped a a volume.
+
+  challtestsrv:
+
+    image: letsencrypt/pebble-challtestsrv:latest
+    container_name: lab-pebble-challtestsrv
+    command: pebble-challtestsrv -http01 ":80" -https01 "443" -dns01 ":53" -defaultIPv6 "" -defaultIPv4 "$DOMINO_IP"
+
+    ports:
+      - 8055:8055  # HTTP Management API
