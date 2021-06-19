@@ -165,37 +165,5 @@
 <item name='AcmeEmailAddress'><text/></item>
 <item name='AcmeEabKid'><text/></item>
 <item name='AcmeEabHmac'><text/></item></document>
-
-<document form='AcmeAccount'>
-<noteinfo noteid='a66' unid='DA10DA790E9939E4C12586D9006E5725' sequence='2'>
-<created><datetime dst='true'>20210518T220512,69+02</datetime></created>
-<modified><datetime dst='true'>20210518T220547,00+02</datetime></modified>
-<revised><datetime dst='true'>20210518T220546,99+02</datetime></revised>
-<lastaccessed><datetime dst='true'>20210518T220546,99+02</datetime></lastaccessed>
-<addedtofile><datetime dst='true'>20210518T220531,12+02</datetime></addedtofile></noteinfo>
-<revisions><datetime dst='true'>20210518T220531,12+02</datetime></revisions>
-<item name='Status'><text/></item>
-<item name='ErrorText'><text/></item>
-<item name='ReqKeySize'><text/></item>
-<item name='ReqKeyCurve'><text>P256</text></item>
-<item name='AcmeAlternateChainSuffix' sign='true'><text/></item>
-<item name='AcmeWebsite'><text/></item>
-<item name='AcmeTermsOfService'><text/></item>
-<item name='AcmeAgreeToServiceTerms'><text>1</text></item>
-<item name='LocalAdmin' names='true' readers='true'><text/></item>
-<item name='Comments'><richtext>
-<pardef id='1' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
-<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
- truetype='false' familyid='20'/></run></par></richtext></item>
-<item name='AdminAccess' authors='true' names='true' protected='true'><text
->[Administrator]</text></item>
-<item name='AccountName'><text>Pebble-DNS</text></item>
-<item name='AcmeDirectoryURL'><text>https://127.0.0.1:14053/dir</text></item>
-<item name='AcmeKid'><text/></item>
-<item name='ReqKeyAlg'><text>E</text></item>
-<item name='ReqKeyRollover'><text/></item>
-<item name='AcmeEmailAddress'><text/></item>
-<item name='AcmeEabKid'><text/></item>
-<item name='AcmeEabHmac'><text/></item></document>
 </database>
 
