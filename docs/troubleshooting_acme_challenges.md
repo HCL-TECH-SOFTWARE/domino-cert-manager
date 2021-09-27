@@ -4,21 +4,21 @@
 
 ### Inbound port 80
 
-ACME HTTP-01 challenges used by CertMgr to confirm Let's Encrypt challenge request, requires an inbound HTTP connection on port 80.  
+ACME HTTP-01 challenges used by CertMgr to confirm Let's Encrypt challenge requests require an inbound HTTP connection on port 80.  
 At least the first request has to be HTTP on port 80. The request can be redirected to another server and also to HTTPS if you have an existing server.  
 
 ### DNS name resolution for the requested hostnames / SANs
 
-The DNS names requested for one or multiple SANs needs to point to this server and any server which is configured in DNS (or behind a load-balancer) needs to be able to reply to the ACME challenge sent via the ACME protocol to Domino to host.
+The DNS names requested for one or multiple SANs need to point to this server and any server which is configured in DNS (or behind a load-balancer) needs to be able to reply to the ACME challenge sent via the ACME protocol to Domino to host.
 
-The CertMgr server stores the challenge infomration in `certstore.nsf` and other servers in the Domino domain can read the challenge data and present it.
+The CertMgr server stores the challenge information in `certstore.nsf` and other servers in the Domino domain can read the challenge data and present it.
 
 ### CertMgr DSAPI filter
 
 Domino V12 requires the `certmgrdsapi` DSAPI filter to be enabled.  
-The DSAPI filter intercepts the request for the challenge, looks up the token and presents it to the ACME server requesting the challenge informaiton.
+The DSAPI filter intercepts the request for the challenge, looks up the token and presents it to the ACME server requesting the challenge information.
 
-The DSAPI filter logs the following type of message when initialized:
+The DSAPI filter logs the following type of message when initialized
 
 ```
 27.09.2021 12:01:00   CertMgrDSAPI: CertMgr / ACME & Let's Encrypt DSAPI
@@ -35,11 +35,11 @@ The well known URLs for challenge requests have the following form
 http://www.acme.com/.well-known/acme-challenge/xzy..
 ```
 
-In case a load balancer or any type of security applicance is in place in front of the Domino server, make sure those type of requests are routed to the Domino HTTP server.
+If a load balancer or any type of security appliance is placed in front of the Domino server, make sure those type of requests are routed to the Domino HTTP server.
 
 ## Inbound connection without authentication
 
-If the server does only allow authenticated access, define the ACME challenge URL as a public URL
+If the server does only allow authenticated access, define the ACME challenge URL as a public URL.
 
 Example notes.ini including redir database:
 
@@ -50,8 +50,10 @@ HTTPPUBLICURLS=/redir.nsf/*:/.well-known/acme-challenge/*
 
 ## Testing inbound challenge requests
 
-The functionality to query HTTP-01 challenges is implemented via DSAPI filter (HTTP in V12.0.1).  
-Any server will reply to those challenge requests matching the well known acme-challenge URL schema with the secret challenge infomration stored in certstore.nsf.
+The functionality to query HTTP-01 challenges is implemented via DSAPI filter in Domino 12.0.
+Starting with Domino 12.0.1 HTTPS natively supports HTTP-01 challenges without a DSAPI filter.    
+
+Any server will reply to those challenge requests matching the well known acme-challenge URL schema with the secret challenge information stored in certstore.nsf.
 
 This lookup functionality can be tested without an actual ACME request.  
 
@@ -72,25 +74,25 @@ curl -L http://www.acme.com/.well-known/acme-challenge/DOMINO-CertMgr-DiagChalle
 
 ### Successful result
 
-The output should look exatly like this:
+The output should look exactly like this:
 
 ```
 DOMINO-ACME-PROTOCOL-CHALLANGE-DATA-OK
 ```
 
-If this result is returned to a web-browser or curl command, the infrastructure is ready for ACME HTTP-01 challenges.
+If this result is returned to a web browser or curl command, the infrastructure is ready for ACME HTTP-01 challenges.
 
 ### Next steps in case of unexpected result
 
-In case your are getting a different reply, you have to check your whole inbound connection infrastructure. From DNS, to load-balances, other services running on the same machine etc.
+In case your are getting a different reply, you have to check your whole inbound connection infrastructure. From DNS, to load-balancers and other services running on the same machine.
 
-The curl command can help you to invoke the quest in different network location in your infrastructure to find out which component might block, redirect or reply to this request instead of your Domino HTTP server.
+The curl command can help to invoke the request in different network locations in your infrastructure to find out which component might block, redirect or reply to this request instead of your Domino HTTP server.
 
 ### Common error cases
 
 - HTTP is redirected to HTTPS and there is no TLS Credentials document yet or the mapping is wrong
 - Only authenticated connections are enabled and public URL environment variable is not set
-- Another application is listening to port 80
+- Another application is listening on port 80
 - The load-balancer or any other active filter blocks the request
 - Wrong DNS entry for requested host name (either internal or external)
 
