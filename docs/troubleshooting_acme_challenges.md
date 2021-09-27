@@ -37,6 +37,17 @@ http://www.acme.com/.well-known/acme-challenge/xzy..
 
 In case a load balancer or any type of security applicance is in place in front of the Domino server, make sure those type of requests are routed to the Domino HTTP server.
 
+## Inbound connection without authentication
+
+If the server does only allow authenticated access, define the ACME challenge URL as a public URL
+
+Example notes.ini including redir database:
+
+```
+HTTPPUBLICURLS=/redir.nsf/*:/.well-known/acme-challenge/*
+```
+
+
 ## Testing inbound challenge requests
 
 The functionality to query HTTP-01 challenges is implemented via DSAPI filter (HTTP in V12.0.1).  
@@ -74,6 +85,15 @@ If this result is returned to a web-browser or curl command, the infrastructure 
 In case your are getting a different reply, you have to check your whole inbound connection infrastructure. From DNS, to load-balances, other services running on the same machine etc.
 
 The curl command can help you to invoke the quest in different network location in your infrastructure to find out which component might block, redirect or reply to this request instead of your Domino HTTP server.
+
+### Common error cases
+
+- HTTP is redirected to HTTPS and there is no TLS Credentials document yet or the mapping is wrong
+- Only authenticated connections are enabled and public URL environment variable is not set
+- Another application is listening to port 80
+- The load-balancer or any other active filter blocks the request
+- Wrong DNS entry for requested host name (either internal or external)
+
 
 ### ACME test challenge DXL File
 
