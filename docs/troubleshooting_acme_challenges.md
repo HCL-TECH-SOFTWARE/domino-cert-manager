@@ -95,6 +95,17 @@ The curl command can help to invoke the request in different network locations i
 - Another application is listening on port 80
 - The load-balancer or any other active filter blocks the request
 - Wrong DNS entry for requested host name (either internal or external)
+- IPv4 and IPv4 DNS entries but Domino is only configured for IPv4
+
+### Querying IPv6 vs IPv4
+
+In case you have IPv6 address DNS entries for your hostname, you have to verify that also the IPv6 address can be reply to the challenge request.  
+When testing connectivity for IPv6 make sure the environment you are using to test the remote connection via curl also supports IPv6.
+
+Curl has specify parameters to either query the IPv4 ( -4 ) or IPv6 address ( -6 )  
+Make sure your Domino server can resolve those DNS names accrodingly.
+Let's Encrypt will check the challenge based on the DNS entries. And also leverages multi point checks.  
+So you will see requests from different servers and have to make sure the reply is always the valid challenge reply requested. 
 
 
 ### ACME test challenge DXL File
