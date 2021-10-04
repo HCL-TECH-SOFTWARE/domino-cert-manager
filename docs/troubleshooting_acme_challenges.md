@@ -60,7 +60,7 @@ This lookup functionality can be tested without an actual ACME request.
 ### Steps to check inbound connections to the well known URL
 
 - Create a DXL file e.g. acme_diag_challenge.dxl with the data shown below
-- Import the file into certstore.nsf
+- Import the file into certstore.nsf (`Import DXL` action in the database)
 - You can see the document in the ($AllDocuments) troubleshooting view (open database with Ctrl-Shift + Application/Goto..)
 
 Now you can query the test DNS challenge using a web-browser or curl command-line.  
@@ -71,6 +71,8 @@ The `-L` option is important when you redirect the challenge to another server.
 ```
 curl -L http://www.acme.com/.well-known/acme-challenge/DOMINO-CertMgr-DiagChallenge-HTTP01
 ```
+
+Tip: If you get no result or the wrong result you might want to add the verbose mode `-v`
 
 ### Successful result
 
