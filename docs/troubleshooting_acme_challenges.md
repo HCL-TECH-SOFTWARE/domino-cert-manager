@@ -7,7 +7,11 @@
 ACME HTTP-01 challenges used by CertMgr to confirm Let's Encrypt challenge requests require an inbound HTTP connection on port 80.  
 At least the first request has to be HTTP on port 80. The request can be redirected to another server and also to HTTPS if you have an existing server.  
 
-As a first test if your server is reachable for Let's Encrypt, you can use the [Let's Debug script](https://letsdebug.net/).
+As a first test if your server is reachable for Let's Encrypt, you can use the [Let's Debug script](https://letsdebug.net/).  
+If this test fails you might have a more general problem. If the test is successful, that doesn't mean it has to work for your.  
+The script can only perform some general troubleshooting steps described on their GitHub repository. But this is a good starting point.
+
+If it fails the following steps are still relevant for you.
 
 
 ### DNS name resolution for the requested hostnames / SANs
