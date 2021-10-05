@@ -1,4 +1,4 @@
-# Troubleshooting ACME challenges
+# Troubleshooting ACME HTTP-01 challenges
 
 ## Verify requirements
 
@@ -6,6 +6,9 @@
 
 ACME HTTP-01 challenges used by CertMgr to confirm Let's Encrypt challenge requests require an inbound HTTP connection on port 80.  
 At least the first request has to be HTTP on port 80. The request can be redirected to another server and also to HTTPS if you have an existing server.  
+
+As a first test if your server is reachable for Let's Encrypt, you can use the [Let's Debug script](https://letsdebug.net/).
+
 
 ### DNS name resolution for the requested hostnames / SANs
 
@@ -41,7 +44,10 @@ If a load balancer or any type of security appliance is placed in front of the D
 
 If the server does only allow authenticated access, define the ACME challenge URL as a public URL.
 
-Example notes.ini including redir database:
+The notes.ini parameter can be used to allow additional URLs to be public and do not need authentication.  
+You can specify multple entries speparated with `:`. If the URL is not complete, append a `*` to the string as shown in the below example.
+
+Example notes.ini including redir.nsf and ACME HTTP-01 public URL definition:
 
 ```
 HTTPPUBLICURLS=/redir.nsf/*:/.well-known/acme-challenge/*
