@@ -100,6 +100,20 @@ In case your are getting a different reply, you have to check your whole inbound
 
 The curl command can help to invoke the request in different network locations in your infrastructure to find out which component might block, redirect or reply to this request instead of your Domino HTTP server.
 
+
+### Troubleshooting internal connections problems verifying challenges
+
+By default CertMgr verifies the HTTP-01 challenge before confirming the HTTP-01 with the ACME provider thru the ACME protocol.   
+This functionality is important to ensure that challenges are in place before the ACME provider tried to verify the challenge.
+
+In case your Domino server cannot resolve the hostname(s) in the certificate requested or you have no HTTP connection to your server from the CertMgr server, you can disable the verification step.
+
+- In Domino V12.0 start the certmgr servertask with the option -g (e.g. load certmgr -g)
+- Domino V12.0.1 introduces a new notes.ini parameter **CertMgr_NoVerifyHTTPChallenge=1** to disable the verification step.
+
+To troubleshoot the verification step, leverage the test challenge described earlier and query it directly on operation system level via the described curl command.
+
+
 ### Common error cases
 
 - HTTP is redirected to HTTPS and there is no TLS Credentials document yet or the mapping is wrong
@@ -108,6 +122,17 @@ The curl command can help to invoke the request in different network locations i
 - The load-balancer or any other active filter blocks the request
 - Wrong DNS entry for requested host name (either internal or external)
 - IPv4 and IPv4 DNS entries but Domino is only configured for IPv4
+
+
+### Special note for environments using a proxy configuration
+
+In case you are using a proxy configuration, ensure your curl command uses the same proxy configuration.
+
+For security reasons CertMgr ignores external proxy configurations specified via environment variables and has it's own proxy configuration including authentication options. If configured in CertMgr, all HTTP requests use the same proxy configuration! For testing you have to make sure you are using the same settings for curl.
+
+- Proxy syntax: https://curl.se/libcurl/c/CURLOPT_PROXY.html
+- More details about curl and proxies: https://everything.curl.dev/usingcurl/proxies#http
+
 
 ### Querying IPv6 vs IPv4
 
@@ -121,6 +146,11 @@ So you will see requests from different servers and have to make sure the reply 
 
 
 ### ACME test challenge DXL File
+
+- Create a DXL file with this content
+- Use the imort action in cerstore.nsf to import the DXL file
+- See deailed steps earlier in this document how to query the challenge
+
 
 ```
 <?xml version='1.0' encoding='utf-8'?>
