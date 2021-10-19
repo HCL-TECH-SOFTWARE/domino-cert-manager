@@ -74,6 +74,16 @@ This lookup functionality can be tested without an actual ACME request.
 - You can see the document in the ($AllDocuments) troubleshooting view (open database with Ctrl-Shift + Application/Goto..)
 
 Now you can query the test DNS challenge using a web-browser or curl command-line.  
+
+Curl is a well known command-line tool often used in the Linux world but also out of the box available starting with Windows 10/20219.  
+You can also separately download it.
+
+It is the defacto standard for command-line HTTP/HTTPS requests.
+
+Refer to the (project homepage)[https://curl.se/] for details.   
+You will find reference documentation and a complete (book)[https://everything.curl.dev/] about Curl.  
+Check the following (section)[https://everything.curl.dev/cmdline] for command-line operations.
+
 The `-L` option is important when you redirect the challenge to another server.
 
 ### Example command line
@@ -123,6 +133,29 @@ To troubleshoot the verification step, leverage the test challenge described ear
 - Wrong DNS entry for requested host name (either internal or external)
 - IPv4 and IPv4 DNS entries but Domino is only configured for IPv4
 
+### Collecting Troubleshooting information
+
+CertMgr can write a detailed debug log stored in IBM_TECHNICAL_SUPPORT directory.  
+In addition all HTTP/HTTPS communication is leveraging LibCurl which allows to log all input/output on low level.  
+Specifying the following debug settings allows you to further narrow down any communications or protocol issues. And provides valuable information for support.  
+
+Note: Ensure to remove passwords and authentications tokens from the logs.
+
+Shutdown certmgr and restart it again with the following parameters:
+
+```
+load certmgr -l -d
+
+-d   Debug (IBM_TECHNICAL_SUPPORT/certmgr_debug_[..].log})
+-l   Log curl requests to file (IBM_TECHNICAL_SUPPORT/certmgr_curl__[..].log})
+```
+
+Example files:
+
+```
+certmgr_curl_domino-lab-admin-srv_2021_10_31@08_42_00.log
+certmgr_debug_domino-lab-admin-srv_2021_10_31@08_42_00.log
+```
 
 ### Special note for environments using a proxy configuration
 
