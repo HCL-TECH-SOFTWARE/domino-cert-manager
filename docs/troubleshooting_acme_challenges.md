@@ -73,9 +73,9 @@ This lookup functionality can be tested without an actual ACME request.
 - Import the file into certstore.nsf (`Import DXL` action in the database)
 - You can see the document in the ($AllDocuments) troubleshooting view (open database with Ctrl-Shift + Application/Goto..)
 
-Now you can query the test DNS challenge using a web-browser or curl command-line.  
+Now you can query the test DNS challenge using a web-browser or `curl` command-line.  
 
-Curl is a well known command-line tool often used in the Linux world but also out of the box available starting with Windows 10/20219.  
+`Curl` is a well known command-line tool often used in the Linux world but also out of the box available starting with Windows 10/2019.  
 You can also separately download it.
 
 It is the defacto standard for command-line HTTP/HTTPS requests.
