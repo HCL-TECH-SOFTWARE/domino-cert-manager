@@ -80,19 +80,22 @@ You can also separately download it.
 
 It is the defacto standard for command-line HTTP/HTTPS requests.
 
-Refer to the (project homepage)[https://curl.se/] for details.   
-You will find reference documentation and a complete (book)[https://everything.curl.dev/] about Curl.  
-Check the following (section)[https://everything.curl.dev/cmdline] for command-line operations.
+Refer to the [project homepage](https://curl.se/) for details.   
+You will find reference documentation and a complete [book](https://everything.curl.dev/) about Curl.  
+Check the following [section](https://everything.curl.dev/cmdline) for command-line operations.
 
-The `-L` option is important when you redirect the challenge to another server.
+The `-L` option is important when you redirect the challenge to another server. This options follows redirects.  
+In case you see now output use `-v` for more verbose output to see protocol issuses.
+
 
 ### Example command line
 
-```
-curl -L http://www.acme.com/.well-known/acme-challenge/DOMINO-CertMgr-DiagChallenge-HTTP01
-```
 
-Tip: If you get no result or the wrong result you might want to add the verbose mode `-v`
+In most cases a test in the following form (replacing your server name) should provide more detailed information.
+
+```
+curl -L -v http://www.acme.com/.well-known/acme-challenge/DOMINO-CertMgr-DiagChallenge-HTTP01
+```
 
 ### Successful result
 
