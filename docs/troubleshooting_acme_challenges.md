@@ -18,7 +18,7 @@ If it fails the following steps are still relevant for you.
 
 The DNS names requested for one or multiple SANs need to point to this server and any server which is configured in DNS (or behind a load-balancer) needs to be able to reply to the ACME challenge sent via the ACME protocol to Domino to host.
 
-The CertMgr server stores the challenge information in `certstore.nsf` and other servers in the Domino domain can read the challenge data and present it.
+CertMgr server stores the challenge information in `certstore.nsf` and other servers in the Domino domain can read the challenge data and present it.
 
 ### CertMgr DSAPI filter
 
@@ -85,7 +85,7 @@ You will find reference documentation and a complete [book](https://everything.c
 Check the following [section](https://everything.curl.dev/cmdline) for command-line operations.
 
 The `-L` option is important when you redirect the challenge to another server. This options follows redirects.  
-In case you see now output use `-v` for more verbose output to see protocol issuses.
+In case you see no output use `-v` for more verbose output to see protocol information and headers returned.
 
 
 ### Example command line
@@ -121,16 +121,16 @@ This functionality is important to ensure that challenges are in place before th
 
 In case your Domino server cannot resolve the hostname(s) in the certificate requested or you have no HTTP connection to your server from the CertMgr server, you can disable the verification step.
 
-- In Domino V12.0 start the certmgr servertask with the option -g (e.g. load certmgr -g)
+- In Domino V12.0 start the certmgr servertask with the option **-g** (e.g. load certmgr -g)
 - Domino V12.0.1 introduces a new notes.ini parameter **CertMgr_NoVerifyHTTPChallenge=1** to disable the verification step.
 
-To troubleshoot the verification step, leverage the test challenge described earlier and query it directly on operation system level via the described curl command.
+To troubleshoot the verification step, leverage the test challenge described earlier and query it directly on operation system level via the described `curl´ command.
 
 
 ### Common error cases
 
 - HTTP is redirected to HTTPS and there is no TLS Credentials document yet or the mapping is wrong
-- Only authenticated connections are enabled and public URL environment variable is not set
+- Only authenticated connections are enabled and public URL environment variable `HTTPPUBLICURLS` is not set
 - Another application is listening on port 80
 - The load-balancer or any other active filter blocks the request
 - Wrong DNS entry for requested host name (either internal or external)
@@ -138,7 +138,7 @@ To troubleshoot the verification step, leverage the test challenge described ear
 
 ### Collecting Troubleshooting information
 
-CertMgr can write a detailed debug log stored in IBM_TECHNICAL_SUPPORT directory.  
+CertMgr can write a detailed debug log stored in `IBM_TECHNICAL_SUPPORT` directory.  
 In addition all HTTP/HTTPS communication is leveraging LibCurl which allows to log all input/output on low level.  
 Specifying the following debug settings allows you to further narrow down any communications or protocol issues. And provides valuable information for support.  
 
@@ -172,7 +172,7 @@ For security reasons CertMgr ignores external proxy configurations specified via
 
 ### Querying IPv6 vs IPv4
 
-In case you have IPv6 address DNS entries for your hostname, you have to verify that also the IPv6 address can be reply to the challenge request.  
+In case you have IPv6 address DNS entries for your hostname, you have to verify that also the IPv6 address can be reached in the same way.  
 When testing connectivity for IPv6 make sure the environment you are using to test the remote connection via curl also supports IPv6.
 
 Curl has specify parameters to either query the IPv4 ( -4 ) or IPv6 address ( -6 )  
