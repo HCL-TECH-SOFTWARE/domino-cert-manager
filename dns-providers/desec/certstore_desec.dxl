@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_11_0.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='11.0' replicaid='C125859E0E5D290D'
+ path='certstore.nsf' title='Certificate Store'
+ fromtemplate='StdCertificateStore' maintainunread='false' increasemaxfields='true'
+ compressdesign='true' compressdata='true' copyprofiledocswithdesign='true'
+ showinopendialog='false'>
+<databaseinfo dbid='C12585B4004B42D5' odsversion='55' diskspace='3407872'
+ percentused='80.17578125' numberofdocuments='154'><datamodified><datetime
+>20211208T155502,59+01</datetime></datamodified><designmodified><datetime
+>20211128T164455,66+01</datetime></designmodified></databaseinfo>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='2602' unid='25EEBE3A6B31405EC12587A400813E52' sequence='4'>
+<created><datetime>20211208T003140,98+01</datetime></created>
+<modified><datetime>20211208T155502,59+01</datetime></modified>
+<revised><datetime>20211208T155502,57+01</datetime></revised>
+<lastaccessed><datetime>20211208T155502,58+01</datetime></lastaccessed>
+<addedtofile><datetime>20211208T003141,79+01</datetime></addedtofile></noteinfo>
+<revisions><datetime>20211208T003141,04+01</datetime><datetime>20211208T123352,91+01</datetime><datetime
+>20211208T142358,47+01</datetime></revisions>
+<textproperties>
+<textproperty propid='0' language='EN'/></textproperties>
+<item name='Log'><text/></item>
+<item name='param_host'><text>_acme-challenge.newton</text></item>
+<item name='Status'><text/></item>
+<item name='param_subdomain'><text>_acme-challenge.newton</text></item>
+<item name='param_queryaddcurrentvalue'><text/></item>
+<item name='param_querydelcurrentvalue'><text/></item>
+<item name='param_querydelnewvalue'><text/></item>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run><span propid='0' regionid='1'><run
+><font size='9pt' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/>The deSEC e.V. REST API</run></span></par>
+<pardef id='2' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>The configuration requires the authorization token in combination with the registered domain as shown below.</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>1. Register an account</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>2. Choose a sub-domain</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>3. Request an access token</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>No additional configuration is required.</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>You can register and name based on the registered domain including wildcard sub domains.</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>In addition to DNS records also dyn DNS configurations are supported but not required.</run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>See details here --&gt; </run><urllink
+ showborder='false' href='https://desec.readthedocs.io/en/latest/dyndns/configure.html'><run
+><font size='9pt' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20' color='system'/>https://desec.readthedocs.io/en/latest/dyndns/configure.html</run></urllink><run
+><font size='9pt' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>You can also use a sub-domain registered at deSEC for validating DNS-01 requests from domains hosted at other providers via CNAME delegation.<break
+/><break/>Note: the propagation for DNS records might be a bit higher then for other providers.<break
+/>The DNS provider delay is set to 80 seconds to avoid validation failures.<break
+/></run></region></par>
+<par def='2'><region regionid='1'/></par>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0201in' refwidth='9.8431in'><tablecolumn width='1.9688in'/><tablecolumn
+ width='7.8743in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='0px'>
+<pardef id='3' leftmargin='0' rightmargin='100%' spaceafter='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='3'><region regionid='1'><run><font size='12pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20' color='#191919'/>DNS Account</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='0px'>
+<pardef id='4' align='right' leftmargin='0' rightmargin='100%' keepwithnext='true'
+ keeptogether='true'/>
+<par def='4'><region regionid='1'><run><font size='8pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='5' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='5'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>Registered domain:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='6' leftmargin='0' rightmargin='7.8063in' keepwithnext='true' keeptogether='true'/>
+<par def='6'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>mydomain.dedyn.io</run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='7' leftmargin='0.1201in' tabs='L2.1875in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='7'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>Account name:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='8' leftmargin='0' rightmargin='7.8063in' tabs='L2.1875in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='8'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>mydomain.dedyn.io</run></region></par></tablecell></tablerow></table>
+<par def='2'><region regionid='1'/></par>
+<par def='2'><region regionid='1'>...</region></par>
+<par def='2'><region regionid='1'/></par>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0201in' refwidth='9.8431in'><tablecolumn width='1.9688in'/><tablecolumn
+ width='7.8743in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='9' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='9'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>Authorization Key:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='10' leftmargin='0' rightmargin='7.8063in' keepwithnext='true'
+ keeptogether='true'/>
+<par def='10'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20' color='maroon'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='9'><region regionid='1'><run><font size='9pt' style='bold' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/>Authorization Token:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<pardef id='11' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='11'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20' color='green'/>my-access-token</run></region></par></tablecell></tablerow></table>
+<par def='2'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<par def='2'><region regionid='1' end='true'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region><run><font
+ size='9pt' name='Helvetica Neue' pitch='variable' truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>80</number></item>
+<item name='EnableTracing'><text>2</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text>G</text></item>
+<item name='ReqAddHttpType'><text>U</text></item>
+<item name='ReqQryDelHttpType'><text>G</text></item>
+<item name='ReqDelHttpType'><text>U</text></item>
+<item name='Comments'><richtext>
+<pardef id='12' tabs='L2.1875in' keepwithnext='true' keeptogether='true'><code
+ event='hidewhen' enabled='false'><formula>REM {DNT Begin}; DnsProviderType != "H"</formula></code></pardef>
+<par def='12'><run><font size='9pt'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>deSEC</text></item>
+<item name='ProviderName'><text>deSEC e.V.</text></item>
+<item name='Website'><text>https://desec.io</text></item>
+<item name='DocumentationURL'><text>https://desec.readthedocs.io/en/latest/</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>HCL</text></item>
+<item name='ReferenceURL'><text/></item>
+<item name='StatusFormula'><text>ret_AddStatus</text></item>
+<item name='cfg_URL'><text>https://desec.io/api/v1</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text>FIELD param_subdomain:=@Left(param_DnsTxtName;"."+ param_RegisteredDomain);<break
+/>cfg_URL + "/domains/" + param_RegisteredDomain + "/rrsets/" + param_subdomain + "/TXT/"</text></item>
+<item name='ReqQryAddHeaderFormula'><text>("Authorization: Token " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>cfg_URL + "/domains/" + param_RegisteredDomain + "/rrsets/"</text></item>
+<item name='ReqAddHeaderFormula'><text>("Authorization: Token " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqAddPostDataFormula'><text>FIELD param_QueryAddCurrentValue := @ReplaceSubString (retJSON_QryAdd.records; {"};{});<break
+/><break/>L:= @Trim (param_DnsTxtValue:param_QueryAddCurrentValue);<break
+/>X:= @if (L=""; "";@Implode ({"\\"} + L + {\\""}; ", "));<break/><break/>'[{"subname":"' + param_subdomain + '","type":"TXT", "records": [' + X + '], "ttl":60}]'</text></item>
+<item name='ReqQryDelUrlFormula'><text>cfg_URL + "/domains/" + param_RegisteredDomain + "/rrsets/" + param_subdomain + "/TXT/"</text></item>
+<item name='ReqQryDelHeaderFormula'><text>("Authorization: Token " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text>cfg_URL + "/domains/" + param_RegisteredDomain + "/rrsets/"</text></item>
+<item name='ReqDelHeaderFormula'><text>("Authorization: Token " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqDelPostDataFormula'><text>FIELD param_QueryDelCurrentValue := @ReplaceSubString (retJSON_QryDel.records; {"};{});<break
+/>FIELD param_QueryDelNewValue := @Replace (param_QueryDelCurrentValue; param_DnsTxtValue; "");<break
+/><break/>L:= @Trim (param_QueryDelNewValue);<break/>X:= @if (L=""; "";@Implode ({"\\"} + L + {\\""}; ", "));<break
+/><break/>'[{"subname":"' + param_subdomain + '","type":"TXT", "records": [' + X + '], "ttl":60}]'</text></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentNameAdd'><text/></item>
+<item name='AgentNameDel'><text/></item></document>
+</database>
+
