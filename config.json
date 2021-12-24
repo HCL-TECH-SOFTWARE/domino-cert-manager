@@ -1,0 +1,33 @@
+{
+  "config": {
+    "certMgr": {
+      "dnsTxtProvider": [
+        {
+          "name": "Cloudflare, Inc.",
+          "shortname": "cloudflare",
+          "downloadURL": "https://raw.githubusercontent.com/HCL-TECH-SOFTWARE/domino-cert-manager/main/dns-providers/cloudflare/certstore_cloudflare.dxl"
+        },
+        {
+          "name": "Hetzner GmbH",
+          "shortname": "hetzner",
+          "downloadURL": "https://raw.githubusercontent.com/HCL-TECH-SOFTWARE/domino-cert-manager/main/dns-providers/hetzner/certstore_hetzner.dxl"
+        },
+        {
+          "name": "Digital Ocean, LLC",
+          "shortname": "digitalocean",
+          "downloadURL": "https://raw.githubusercontent.com/HCL-TECH-SOFTWARE/domino-cert-manager/main/dns-providers/digitalocean/certstore_digitalocean.dxl"
+        },
+        {
+          "name": "deSEC e. V.",
+          "shortname": "desec",
+          "downloadURL": "https://raw.githubusercontent.com/HCL-TECH-SOFTWARE/domino-cert-manager/main/dns-providers/desec/certstore_desec.dxl"
+        },
+        {
+          "name": "ACME DNS",
+          "shortname": "acmedns",
+          "downloadURL": "https://raw.githubusercontent.com/HCL-TECH-SOFTWARE/domino-cert-manager/main/dns-providers/acmedns/certstore_acmedns.dxl"
+        }
+      ]
+    }
+  }
+}
