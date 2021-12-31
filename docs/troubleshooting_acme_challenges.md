@@ -5,7 +5,12 @@
 ### Inbound port 80
 
 ACME HTTP-01 challenges used by CertMgr to confirm Let's Encrypt challenge requests require an inbound HTTP connection on port 80.  
-At least the first request has to be HTTP on port 80. The request can be redirected to another server and also to HTTPS if you have an existing server.  
+The challenge verification for each cetificate request always starts on **HTTP on port 80**. The request can be redirected to another server. The target can be any domain, but the target port has to be either **port 80** or **port 443**. HTTPS certificates are not verified.
+
+The first request does not need to reach the Domino server directly. You can also intercept the HTTP request on port 80 on a load balancer or reverse proxy, redirecting it to another server or the same Domino server over HTTPS.
+
+See [implementation details](https://letsencrypt.org/docs/challenge-types/#http-01-challenge) for the ACME HTTP-01 challenge on the Let's Encrypt website.
+Also check [Best Practice - Keep Port 80 Open](https://letsencrypt.org/docs/allow-port-80/).
 
 As a first test if your server is reachable for Let's Encrypt, you can use the [Let's Debug script](https://letsdebug.net/).  
 If this test fails you might have a more general problem. If the test is successful, that doesn't mean it has to work for your.  
