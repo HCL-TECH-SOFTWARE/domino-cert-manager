@@ -139,7 +139,7 @@ To troubleshoot the verification step, leverage the test challenge described ear
 - Another application is listening on port 80
 - The load-balancer or any other active filter blocks the request
 - Wrong DNS entry for requested host name (either internal or external)
-- IPv4 and IPv4 DNS entries but Domino is only configured for IPv4
+- IPv4 and IPv6 DNS entries but Domino is only configured for IPv4
 
 ### Collecting Troubleshooting information
 
@@ -182,7 +182,7 @@ When testing connectivity for IPv6 make sure the environment you are using to te
 
 Curl has specify parameters to either query the IPv4 ( -4 ) or IPv6 address ( -6 )  
 Make sure your Domino server can resolve those DNS names accrodingly.
-Let's Encrypt will check the challenge based on the DNS entries. And also leverages multi point checks.  
+Let's Encrypt will check the challenge based on all DNS entries (IPv4 and IPv6). And also leverages multi point checks.  
 So you will see requests from different servers and have to make sure the reply is always the valid challenge reply requested. 
 
 
