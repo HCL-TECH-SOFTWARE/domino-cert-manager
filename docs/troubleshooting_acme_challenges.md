@@ -29,9 +29,9 @@ CertMgr server stores the challenge information in `certstore.nsf` and other ser
 ### GEO fencying protected servers mostly fail Let's Encrypt ACME HTTP-01 Challenges
 
 Let's Encrypt validates the challenge from multiple network points around the world -- [Validating challenges from multiple network vantage points](https://community.letsencrypt.org/t/acme-v1-v2-validating-challenges-from-multiple-network-vantage-points/112253).
-You usually can't assume network requests come from a well defined county. Other ACME provides might have different requirements.  
+You usually can't assume network requests come from a well defined country. Other ACME provides might have different requirements.  
 Depending on your configuration you might be lucky that sufficient number of challenges are successful.  
-But in most cases HTTP-01 cannot be used. If your DNS provider provides a DNS API, you might want to consider switching to DNS-01 challenges, which don't require an inbound connection for validation.
+But in most cases HTTP-01 cannot be used. If your DNS provider supports a DNS API, you might want to consider switching to DNS-01 challenges, which don't require an inbound connection for validation.
 
 In case challenges fail the ACME request will fail with an error returned by the ACME protocol. The error will look probably like a general network connecting error depending on the way the request is blocked.
 
@@ -94,7 +94,7 @@ Now you can query the test DNS challenge using a web-browser or `curl` command-l
 `Curl` is a well known command-line tool often used in the Linux world but also out of the box available starting with Windows 10/2019.  
 You can also separately download it.
 
-It is the defacto standard for command-line HTTP/HTTPS requests.
+It is the de-facto standard for command-line HTTP/HTTPS requests.
 
 Refer to the [project homepage](https://curl.se/) for details.   
 You will find reference documentation and a complete [book](https://everything.curl.dev/) about Curl.  
@@ -132,7 +132,7 @@ The curl command can help to invoke the request in different network locations i
 
 ### Troubleshooting internal connections problems verifying challenges
 
-By default CertMgr verifies the HTTP-01 challenge before confirming the HTTP-01 with the ACME provider thru the ACME protocol.  
+By default CertMgr verifies the HTTP-01 challenge before confirming the HTTP-01 in the ACME protocol flow.  
 This functionality is important to ensure that challenges are in place before the ACME provider tried to verify the challenge.
 
 In case your Domino server cannot resolve the hostname(s) in the certificate requested or you have no HTTP connection to your server from the CertMgr server, you can disable the verification step.
@@ -213,3 +213,11 @@ So you will see requests from different servers and have to make sure the reply 
 <item name='ChallengeName'><text>/.well-known/acme-challenge/DOMINO-CertMgr-DiagChallenge-HTTP01</text></item></document>
 </database>
 ```
+
+### References and further information
+
+Documentation:  
+[Let's Encrypt documentation](https://letsencrypt.org/docs/)
+
+RFC:  
+[RFC 8555 Automatic Certificate Management Environment (ACME)](https://datatracker.ietf.org/doc/rfc8555/)
