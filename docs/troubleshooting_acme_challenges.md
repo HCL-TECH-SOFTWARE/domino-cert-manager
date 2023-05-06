@@ -35,6 +35,29 @@ But in most cases HTTP-01 cannot be used. If your DNS provider supports a DNS AP
 
 In case challenges fail the ACME request will fail with an error returned by the ACME protocol. The error will look probably like a general network connecting error depending on the way the request is blocked.
 
+
+### Domino HTTP-01 ACME Challenge integration
+
+Beginning with Domino 12.0.1 the HTTP automatically handles ACME HTTP-01 challenge.
+
+The functionality is automatically enabled on HTTP server start, once the cerstore.nsf database is present.
+
+Ensure you restart the HTTP task once after cerstore.nsf is created.
+
+The HTTP task requires are complete restart via:
+
+```
+restart task http
+```
+
+After restarting a message in the following form will be printed.
+Verify of the right CertMgr server is displayed.
+
+
+```
+HTTP Server: ACME HTTP-01 Extension loaded - CertMgr Server: [pluto/NotesLab]
+```
+
 ### Domino 12.0 only - CertMgr DSAPI filter
 
 Beginning with Domino V12.0.1 the DSAPI filter functionality has been incorporated into the HTTP task and no DSAPI filter will be required. The functionality is enabled by default.  
