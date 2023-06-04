@@ -2,7 +2,7 @@
 <!DOCTYPE database SYSTEM 'xmlschemas/domino_11_0_1.dtd'>
 
 <!--
- Copyright 2021 HCL America, Inc.
+ Copyright 2021-2023 HCL America, Inc.
 
  Licensed to the Apache Software Foundation (ASF) under one or more
  contributor license agreements.  See the NOTICE file distributed with
@@ -38,7 +38,6 @@
 <revisions><datetime>20210505T184701,94+00</datetime><datetime>20210505T184714,17+00</datetime><datetime
 >20210505T184719,47+00</datetime></revisions>
 <item name='Log'><text/></item>
-<item name='cfg_DnsZone'><text/></item>
 <item name='Status'><text/></item>
 <item name='Body'><richtext>
 <pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
@@ -208,7 +207,7 @@
 <item name='ProviderName'><text>Cloudflare, Inc.</text></item>
 <item name='Website'><text>https://www.cloudflare.com</text></item>
 <item name='DocumentationURL'><text>https://api.cloudflare.com/</text></item>
-<item name='Version'><text>1.1</text></item>
+<item name='Version'><text>1.2</text></item>
 <item name='Author'><text>HCL</text></item>
 <item name='ReferenceURL'><text/></item>
 <item name='StatusFormula'><text>@if (retJSON_Add.success = "true"; 200; 400)</text></item>
