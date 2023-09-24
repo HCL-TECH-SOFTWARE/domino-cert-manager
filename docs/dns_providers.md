@@ -1,3 +1,12 @@
+---
+layout: default
+title: "DNS TXT API Integrations"
+nav_order: 1
+parent: "Reference"
+description: "Available DNS provider integrations"
+has_children: false
+---
+
 
 # Available DNS provider integrations
 

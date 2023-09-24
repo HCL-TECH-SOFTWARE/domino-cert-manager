@@ -1,3 +1,12 @@
+---
+layout: default
+title: "Certificate Flows"
+nav_order: 2
+parent: "Concept & Overview"
+description: "CertMgr Certificate Flows"
+has_children: false
+---
+
 
 # CertMgr Certificate Flows
 

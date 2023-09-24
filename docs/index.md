@@ -1,3 +1,15 @@
+---
+layout: default
+title: "Concept & Overview"
+nav_order: 1
+description: "Domino 12 certificate management & integrations"
+has_children: true
+---
+
+[Quickstart](quickstart.md){: .btn }
+[View it on GitHub](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager){: .btn }
+
+
 # Domino Certificate Manager (CertMgr)
 
 HCL Domino 12 introduced a new server task and Domino domain wide database **certstore.nsf**, which replaces the old KYR file approach inherited from IBM.

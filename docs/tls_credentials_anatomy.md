@@ -1,3 +1,12 @@
+---
+layout: default
+title: "Anatomy of TLS Credentials"
+nav_order: 1
+description: "Anatomy of a TLS Credentials document"
+parent: "Architecture"
+has_children: false
+---
+
 
 # Anatomy of a TLS Credentials document
 
