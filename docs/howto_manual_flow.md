@@ -22,7 +22,7 @@ Creating the private key directly is the recommended way to ensure private keys 
 
 Switch to the TLS Credentials view and use the action menu to create a new TLS credentials document.
 
-![AddTLSCredentials](assets\images\png\manual_flow\m1.png)
+![AddTLSCredentials](assets/images/png/manual_flow/m1.png)
 
 ## Specify CSR details
 
@@ -32,22 +32,22 @@ Today's web server certificates require a so called "SAN" (Subject Alternate Nam
 - Select one or more servers which should be able to use this new TLS credentials.
 - Specify the key format and key size/key curve
 
-![ManualFlow](assets\images\png\manual_flow\m2.png)
+![ManualFlow](assets/images/png/manual_flow/m2.png)
 
 ## Create new CSR and send it to CA
 
 Submitting the document requests a new CSR for the newly created key.
 
-![NewCSR](assets\images\png\manual_flow\m3.png)
+![NewCSR](assets/images/png/manual_flow/m3.png)
 
 
 Once the server processed the request the menu shows a new button to copy the CSR to be send to your corporate or external CA.
 
-![CopyCSR](assets\images\png\manual_flow\m4.png)
+![CopyCSR](assets/images/png/manual_flow/m4.png)
 
 In our example case we are sending the CSR by mail to a lab certificate authority (CA).
 
-![SendCSRtoCA](assets\images\png\manual_flow\m5.png)
+![SendCSRtoCA](assets/images/png/manual_flow/m5.png)
 
 
 ## Root CA Certificate
@@ -65,14 +65,14 @@ In our example case the Lab CA sends back the signed certificate and CA chain im
 The required format is the text based PEM format. In case your certificate chain is not in PEM format, convert the format accordingly.
 Most external and internal CAs provide the CA in PEM format if requested.
 
-![ReceiveCertChain](assets\images\png\manual_flow\m6.png)
+![ReceiveCertChain](assets/images/png/manual_flow/m6.png)
 
 Use the past button to past the certificate chain into the TLS Credentials document and submit the request.
 The CertMgr server merges your certificates with the private key and checks if the certificate chain is complete.
 
-![PastCertificate](assets\images\png\manual_flowco\m7.png)
+![PastCertificate](assets/images/png/manual_flow/m7.png)
 
 After the request is processed reopen the document and check the status of the certificate.
 
-![CheckCertificate](assets\images\png\manual_flow\m8.png)
+![CheckCertificate](assets/images/png/manual_flow/m8.png)
 
