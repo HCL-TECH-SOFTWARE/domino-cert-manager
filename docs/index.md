@@ -12,7 +12,7 @@ has_children: true
 
 # Domino Certificate Manager (CertMgr)
 
-HCL Domino 12 introduced a new server task and Domino domain wide database **certstore.nsf**, which replaces the old KYR file approach inherited from IBM.
+HCL Domino 12 introduced a new server task and Domino domain wide database **certstore.nsf**, which replaces the old **kyrfile.kyr** approach inherited from IBM.
 The new CertMgr dramatically simplifies certificate operations and allows you to perform all certificate operations directly from a modern UI.
 All CertMgr operations are centrally managed on your designated CertMgr server and are replicated to all servers in your domain.
 
