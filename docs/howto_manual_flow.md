@@ -34,23 +34,29 @@ Today's web server certificates require a so called "SAN" (Subject Alternate Nam
 
 ![ManualFlow](assets/images/png/manual_flow/m2.png)
 
-## Create new CSR and send it to CA
+
+## Create new CSR
 
 Submitting the document requests a new CSR for the newly created key.
 
 ![NewCSR](assets/images/png/manual_flow/m3.png)
 
 
+## Copy CSR
+
 Once the server processed the request the menu shows a new button to copy the CSR to be send to your corporate or external CA.
 
 ![CopyCSR](assets/images/png/manual_flow/m4.png)
+
+
+## Send CSR to CA
 
 In our example case we are sending the CSR by mail to a lab certificate authority (CA).
 
 ![SendCSRtoCA](assets/images/png/manual_flow/m5.png)
 
 
-## Root CA Certificate
+## Add Root CA Certificate
 
 In most cases the CA is not provide the root certificate and in many cases not even the intermediate certificates along with the new certificate.
 In this case first import the trusted root certificate or append the root certificate in PEM format to your received certificate.
@@ -67,10 +73,16 @@ Most external and internal CAs provide the CA in PEM format if requested.
 
 ![ReceiveCertChain](assets/images/png/manual_flow/m6.png)
 
+
+## Past Certificate Chain
+
 Use the past button to past the certificate chain into the TLS Credentials document and submit the request.
 The CertMgr server merges your certificates with the private key and checks if the certificate chain is complete.
 
 ![PastCertificate](assets/images/png/manual_flow/m7.png)
+
+
+## Check new Certificate
 
 After the request is processed reopen the document and check the status of the certificate.
 
