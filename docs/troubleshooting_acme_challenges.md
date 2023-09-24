@@ -1,3 +1,12 @@
+---
+layout: default
+title: "Troubleshooting ACME HTTP-01 Challenges"
+nav_order: 1
+parent: "Troubleshooting"
+description: "Troubleshooting ACME HTTP-01 Challenges"
+has_children: false
+---
+
 # Troubleshooting ACME HTTP-01 challenges
 
 ## Verify requirements
