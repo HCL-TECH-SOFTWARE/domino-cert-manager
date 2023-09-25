@@ -70,7 +70,7 @@ back_to_top_text: "Back to top"
 
 next_page: true
 
-footer_content: "HCL Domino Certificte Manager"
+footer_content: "HCL Domino Certificate Manager"
 
 # Footer last edited timestamp
 # last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter

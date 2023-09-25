@@ -122,7 +122,7 @@ This is specially interested for services located behind a load-balancer service
 
 ### ACME DNS-01 Challenges
 
-In contrast to **ACME HTTP-01** challenges, *ACME DNS-01** challenges don't require any inbound connection. The validation is leveraging a DNS TXT record added to the authoritative DNS server for the domain requested containing a challenge secret provided by the ACME protocol, similar to the challenge provided in the HTTP-01 flow.
+In contrast to **ACME HTTP-01** challenges, **ACME DNS-01** challenges don't require any inbound connection. The validation is leveraging a DNS TXT record added to the authoritative DNS server for the domain requested containing a challenge secret provided by the ACME protocol, similar to the challenge provided in the HTTP-01 flow.
 Storing and removing the challenge requires a DNS integration which allows your CertMgr server to automatically write the challenge information into a DNS TXT record.
 This repository contains DNS TXT integration for the most commonly used DNS providers. CertMgr provides a very flexible interface creating additional integrations, which can be exported and imported using the DXL standard.
 Once a DNS TXT API is in place a DNS provider document can be created to define DNS-01 challenge operations for a domain. All requests for this domain will automatically use a **ACME DNS-01** instead of a **ACME HTTP-01** challenge.
