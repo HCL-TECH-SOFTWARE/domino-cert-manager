@@ -74,12 +74,12 @@ Most external and internal CAs provide the CA in PEM format if requested.
 ![ReceiveCertChain](assets/images/png/manual_flow/m6.png)
 
 
-## Past Certificate Chain
+## Paste Certificate Chain
 
-Use the past button to past the certificate chain into the TLS Credentials document and submit the request.
+Use the paste button to paste the certificate chain into the TLS Credentials document and submit the request.
 The CertMgr server merges your certificates with the private key and checks if the certificate chain is complete.
 
-![PastCertificate](assets/images/png/manual_flow/m7.png)
+![PasteCertificate](assets/images/png/manual_flow/m7.png)
 
 
 ## Check new Certificate

@@ -52,7 +52,7 @@ This flow can be automated and allows to deploy and update certificates for exis
 
 ### Example NGINX configuration with HTTPS and ACME redirect
 
-Check [example configuration](../examples/nginx/nginx.conf) for details.
+Check [example configuration](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/tree/main/examples/nginx) for details.
 
 The first part of the example shows:
 
@@ -63,7 +63,7 @@ The second part of the example shows a TLS configured site, using an exported pr
 
 ### Example NGINX certificate update script
 
-Check the [example script](../examples/nginx/cert_upd_nginx.sh) for automating certificate deployments and updates.
+Check the [example script](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/tree/main/examples/nginx/cert_upd_nginx.sh) for automating certificate deployments and updates.
 
 The script assumes the default configured PEM file from the previous NGINX configuration `/etc/nginx/cert.pem` as the default value. It leverages `openssl` command line to retrieve and check the certificate.
 
