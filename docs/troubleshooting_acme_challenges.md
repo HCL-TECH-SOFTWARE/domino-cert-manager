@@ -150,7 +150,7 @@ curl -L -v http://www.acme.com/.well-known/acme-challenge/DOMINO-CertMgr-DiagCha
 The output should look exactly like this:
 
 ```
-DOMINO-ACME-PROTOCOL-CHALLANGE-DATA-OK
+DOMINO-ACME-PROTOCOL-CHALLENGE-DATA-OK
 ```
 
 If this result is returned to a web browser or curl command, the infrastructure is ready for ACME HTTP-01 challenges.
@@ -241,7 +241,7 @@ So you will see requests from different servers and have to make sure the reply 
 <!DOCTYPE database SYSTEM 'xmlschemas/domino_11_0_1.dtd'>
 <database xmlns='http://www.lotus.com/dxl' version='11.0' maintenanceversion='1.0'>
 <document form='AcmeChallenge'>
-<item name='ChallengeContent'><text>DOMINO-ACME-PROTOCOL-CHALLANGE-DATA-OK</text></item>
+<item name='ChallengeContent'><text>DOMINO-ACME-PROTOCOL-CHALLENGE-DATA-OK</text></item>
 <item name='ChallengeName'><text>/.well-known/acme-challenge/DOMINO-CertMgr-DiagChallenge-HTTP01</text></item></document>
 </database>
 ```
