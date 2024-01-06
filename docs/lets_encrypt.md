@@ -25,6 +25,8 @@ There might be some special cases specially in the Java space for older JVMs whi
 
 **In general the best practice is to stay with the default chain of trust unless you really need or want to switch.**
 
+Unless you made changes, there is no action needed in February.
+
 ## How to request the shorter certificate chain today
 
 Domino CertMgr provides an option to request the alternate chain, if the new chain is required today.
@@ -44,7 +46,7 @@ If you did not change the suffix, there is nothing to do unless you want to keep
 In this very special case read the LE link in detail and see what strategy you might want to follow. 
 
 
-### Remove the alternate suffix
+## Remove the alternate suffix
 
 **In case you changed the suffix**, remove the **ACME Alternate Chain Suffix** before the certificate is renewed the next time.
 A best practice would be to renew the certificate today by submitting the TLS Credentials document, afterwards remove the suffix and save the document without submitting it again.
