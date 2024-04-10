@@ -115,19 +115,27 @@ openssl pkcs12 -in cert.pfx -out cert.pem -nodes
 
 ## DER binary to PEM
 
-Converts binary DER cert file into (BASE64 encoded) PEM format
+Converts binary DER cert file into PEM format
 
 ```
 openssl x509 -inform der -in server.cer -outform pem -out server.pem
 ```
 
 
-## DER binary encoded cert chain into PEM
+## PKCS7 DER binary encoded cert chain into PEM
 
-Converts binary DER encoded cert chain into (BASE64 encoded) PEM format
+Converts binary DER encoded cert chain into PEM format
 
 ```
 openssl pkcs7 -print_certs -inform der -in certificate_chain.p7b -outform pem -out chain.pem
+```
+
+## PKCS7 PEM encoded cert chain into standard PEM
+
+Converts PEM encoded cert chain into PEM format
+
+```
+openssl pkcs7 -print_certs -inform pem -in certificate_chain.pem -outform pem -out chain.pem
 ```
 
 
@@ -145,4 +153,3 @@ Same conversion just for certificates without keys
 openssl pkcs12 -export -nokeys -in cert.pem -out server.p12
 
 ```
-
