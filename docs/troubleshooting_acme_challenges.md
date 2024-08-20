@@ -214,8 +214,8 @@ In case you are using a proxy configuration, ensure your curl command uses the s
 
 For security reasons CertMgr ignores external proxy configurations specified via environment variables and has it's own proxy configuration including authentication options. If configured in CertMgr, all HTTP requests use the same proxy configuration! For testing you have to make sure you are using the same settings for curl.
 
-- Proxy syntax: https://curl.se/libcurl/c/CURLOPT_PROXY.html
-- More details about curl and proxies: https://everything.curl.dev/usingcurl/proxies#http
+- Proxy syntax: [CURLOPT_PROXY](https://curl.se/libcurl/c/CURLOPT_PROXY.html)
+- More details about curl and proxies: [Everything curl / HTTP Proxies](https://everything.curl.dev/usingcurl/proxies)
 
 
 ### Querying IPv6 vs IPv4
