@@ -13,31 +13,46 @@ has_children: false
 
 ### Inbound port 80
 
-ACME HTTP-01 challenges used by CertMgr to confirm Let's Encrypt challenge requests require an inbound HTTP connection on port 80.  
-The challenge verification for each certificate request always starts on **HTTP on port 80**. The request can be redirected to another server. The target can be any domain, but the target port has to be either **port 80** or **port 443**. HTTPS certificates are not verified.
+Let's Encrypt and other ACME providers mostly use **ACME HTTP-01** challenges to verify a certificate request.
+ACME HTTP-01 requests always require an inbound HTTP connection on port 80.  
+The challenge verification for each certificate request always starts on **HTTP port 80**. But the request can be redirected to another server or to HTTPS on the same server.  
+The redirect target can be any domain, but the target port has to be either **port 80** or **port 443**.  
+For HTTPS connections certificates are not verified (neither the name nor if the certificate is valid).
 
-The first request does not need to reach the Domino server directly. You can also intercept the HTTP request on port 80 on a load balancer or reverse proxy, redirecting it to another server or the same Domino server over HTTPS.
+The first request does not need to reach the Domino server directly.
+You can also intercept the HTTP request on port 80 on a load balancer or reverse proxy, redirecting it to another server or the same Domino server over HTTPS.
 
 See [implementation details](https://letsencrypt.org/docs/challenge-types/#http-01-challenge) for the ACME HTTP-01 challenge on the Let's Encrypt website.
 Also check [Best Practice - Keep Port 80 Open](https://letsencrypt.org/docs/allow-port-80/).
 
-As a first test if your server is reachable for Let's Encrypt, you can use the [Let's Debug script](https://letsdebug.net/).  
-If this test fails you might have a more general problem. If the test is successful, that doesn't mean it has to work for your.  
-The script can only perform some general troubleshooting steps described on their GitHub repository. But this is a good starting point.
 
-If it fails the following steps are still relevant for you.
+## Troubleshooting
+
+### Let's Debug Script
+
+The [Let's Debug script](https://letsdebug.net/) helps to find out if your HTTP port 80 is reachable and if the request is likely to be successful.
+It provides useful details helping to understand what is failing. But it cannot detect all problems.
+The test challenge at the end of this article is Let's Debug script compatible.
+
+The script checks one hostname/domain at a time.
+If you have multiple Subject Alternate Names (SANs) any of the domains might fail.
+To start with check with one hostname/SAN. If one name is successful try other names if needed.
+
+If the script is successful and you are still running into problems check the following information for details and common issues.
 
 
 ### DNS name resolution for the requested hostnames / SANs
 
-The DNS names requested for one or multiple SANs need to point to this server and any server which is configured in DNS (or behind a load-balancer) needs to be able to reply to the ACME challenge sent via the ACME protocol to Domino to host.
+The DNS names requested for one or multiple SANs need to point to this server and any server which is configured in DNS (or behind a load-balancer)
+needs to be able to reply to the ACME challenge sent via the ACME protocol to Domino to host.
 
 CertMgr server stores the challenge information in `certstore.nsf` and other servers in the Domino domain can read the challenge data and present it.
 
 
 ### GEO fencying protected servers mostly fail Let's Encrypt ACME HTTP-01 Challenges
 
-Let's Encrypt validates the challenge from multiple network points around the world -- [Validating challenges from multiple network vantage points](https://community.letsencrypt.org/t/acme-v1-v2-validating-challenges-from-multiple-network-vantage-points/112253).
+Let's Encrypt validates the challenge from multiple network points around the world --
+[Validating challenges from multiple network vantage points](https://community.letsencrypt.org/t/acme-v1-v2-validating-challenges-from-multiple-network-vantage-points/112253).  
 You usually can't assume network requests come from a well defined country. Other ACME provides might have different requirements.  
 Depending on your configuration you might be lucky that sufficient number of challenges are successful.  
 But in most cases HTTP-01 cannot be used. If your DNS provider supports a DNS API, you might want to consider switching to DNS-01 challenges, which don't require an inbound connection for validation.
@@ -47,11 +62,9 @@ In case challenges fail the ACME request will fail with an error returned by the
 
 ### Domino HTTP-01 ACME Challenge integration
 
-Beginning with Domino 12.0.1 the HTTP automatically handles ACME HTTP-01 challenge.
-
-The functionality is automatically enabled on HTTP server start, once the cerstore.nsf database is present.
-
-Ensure you restart the HTTP task once after cerstore.nsf is created.
+Beginning with Domino 12.0.1 the HTTP automatically handles ACME HTTP-01 challenge.  
+The functionality is automatically enabled on HTTP server start, once the `cerstore.nsf` database is present.  
+Ensure you restart the HTTP task once after `cerstore.nsf` is created.
 
 The HTTP task requires are complete restart via:
 
@@ -62,25 +75,9 @@ restart task http
 After restarting a message in the following form will be printed.
 Verify of the right CertMgr server is displayed.
 
-
 ```
 HTTP Server: ACME HTTP-01 Extension loaded - CertMgr Server: [pluto/NotesLab]
 ```
-
-### Domino 12.0 only - CertMgr DSAPI filter
-
-Beginning with Domino V12.0.1 the DSAPI filter functionality has been incorporated into the HTTP task and no DSAPI filter will be required. The functionality is enabled by default.  
-
-Domino 12.0 requires the `certmgrdsapi` DSAPI filter to be enabled.  
-The DSAPI filter intercepts the request for the challenge, looks up the token and presents it to the ACME server requesting the challenge information.
-
-The DSAPI filter logs the following type of message when initialized
-
-```
-27.09.2021 12:01:00   CertMgrDSAPI: CertMgr / ACME & Let's Encrypt DSAPI
-27.09.2021 12:01:00   HTTP Server: DSAPI CertMgrDSAPI Loaded successfully
-```
-
 
 ### Request URLs
 
@@ -92,6 +89,7 @@ http://www.acme.com/.well-known/acme-challenge/xzy..
 
 If a load balancer or any type of security appliance is placed in front of the Domino server, make sure those type of requests are routed to the Domino HTTP server.
 
+
 ## Inbound connection without authentication
 
 If the server does only allow authenticated access, define the ACME challenge URL as a public URL.
@@ -99,7 +97,7 @@ If the server does only allow authenticated access, define the ACME challenge UR
 The notes.ini parameter can be used to allow additional URLs to be public and do not need authentication.  
 You can specify multiple entries separated with `:`. If the URL is not complete, append a `*` to the string as shown in the below example.
 
-Example notes.ini including redir.nsf and ACME HTTP-01 public URL definition:
+Example notes.ini including `redir.nsf` and ACME HTTP-01 public URL definition:
 
 ```
 HTTPPUBLICURLS=/redir.nsf/*:/.well-known/acme-challenge/*
@@ -108,23 +106,20 @@ HTTPPUBLICURLS=/redir.nsf/*:/.well-known/acme-challenge/*
 
 ## Testing inbound challenge requests
 
-The functionality to query HTTP-01 challenges is implemented via DSAPI filter in Domino 12.0.
-Starting with Domino 12.0.1 HTTPS natively supports HTTP-01 challenges without a DSAPI filter.  
-
-Any server will reply to those challenge requests matching the well known acme-challenge URL schema with the secret challenge information stored in certstore.nsf.
+Any server will reply to those challenge requests matching the well known acme-challenge URL schema with the secret challenge information stored in `certstore.nsf`.
 
 This lookup functionality can be tested without an actual ACME request.  
+
 
 ### Steps to check inbound connections to the well known URL
 
 - Create a DXL file e.g. acme_diag_challenge.dxl with the data shown below
-- Import the file into certstore.nsf (`Import DXL` action in the database)
-- You can see the document in the ($AllDocuments) troubleshooting view (open database with CTRL-Shift + Application/Goto..)
+- Import the file into `certstore.nsf` (`Import DXL` action in the database)
+- You can see the document in `($AllDocuments)` troubleshooting view (open database with CTRL-Shift + Application/Goto..)
 
 Now you can query the test DNS challenge using a web-browser or `curl` command-line.  
 
 `Curl` is a well known command-line tool often used in the Linux world but also out of the box available starting with Windows 10/2019.  
-You can also separately download it.
 
 It is the de-facto standard for command-line HTTP/HTTPS requests.
 
@@ -138,16 +133,21 @@ In case you see no output use `-v` for more verbose output to see protocol infor
 
 ### Example command line
 
-
 In most cases a test in the following form (replacing your server name) should provide more detailed information.
 
+```curl -L -v http://www.acme.com/.well-known/acme-challenge/letsdebug-test
 ```
-curl -L -v http://www.acme.com/.well-known/acme-challenge/DOMINO-CertMgr-DiagChallenge-HTTP01
-```
+
 
 ### Successful result
 
-The output should look exactly like this:
+
+If the test challenge was not uploaded you should see the following output:
+
+```Challenge NOT found
+```
+
+If the challenge was uploaded the output should look like this:
 
 ```
 DOMINO-ACME-PROTOCOL-CHALLENGE-DATA-OK
@@ -155,10 +155,10 @@ DOMINO-ACME-PROTOCOL-CHALLENGE-DATA-OK
 
 If this result is returned to a web browser or curl command, the infrastructure is ready for ACME HTTP-01 challenges.
 
+
 ### Next steps in case of unexpected result
 
-In case your are getting a different reply, you have to check your whole inbound connection infrastructure. From DNS, to load-balancers and other services running on the same machine.
-
+In case your are getting a different reply, you have to check your whole inbound connection infrastructure. From DNS, to load-balancers and other services running on the same machine.  
 The curl command can help to invoke the request in different network locations in your infrastructure to find out which component might block, redirect or reply to this request instead of your Domino HTTP server.
 
 
@@ -183,6 +183,7 @@ To troubleshoot the verification step, leverage the test challenge described ear
 - The load-balancer or any other active filter blocks the request
 - Wrong DNS entry for requested host name (either internal or external)
 - IPv4 and IPv6 DNS entries but Domino is only configured for IPv4
+
 
 ### Collecting Troubleshooting information
 
@@ -229,11 +230,28 @@ Let's Encrypt will check the challenge based on all DNS entries (IPv4 and IPv6).
 So you will see requests from different servers and have to make sure the reply is always the valid challenge reply requested. 
 
 
+### Domino 12.0 only - CertMgr DSAPI filter
+
+Beginning with Domino V12.0.1 the DSAPI filter functionality has been incorporated into the HTTP task and no DSAPI filter will be required. The functionality is enabled by default.  
+
+Domino 12.0 requires the `certmgrdsapi` DSAPI filter to be enabled.  
+The DSAPI filter intercepts the request for the challenge, looks up the token and presents it to the ACME server requesting the challenge information.
+
+The DSAPI filter logs the following type of message when initialized
+
+```
+27.09.2021 12:01:00   CertMgrDSAPI: CertMgr / ACME & Let's Encrypt DSAPI
+27.09.2021 12:01:00   HTTP Server: DSAPI CertMgrDSAPI Loaded successfully
+```
+
+
 ### ACME test challenge DXL File
 
 - Create a DXL file with this content
-- Use the import action in cerstore.nsf to import the DXL file
+- Use the import action in `cerstore.nsf` to import the DXL file
 - See detailed steps earlier in this document how to query the challenge
+
+The ACME challenge provided uses the same name as the Let's Debug script on purpose.
 
 
 ```
@@ -242,7 +260,7 @@ So you will see requests from different servers and have to make sure the reply 
 <database xmlns='http://www.lotus.com/dxl' version='11.0' maintenanceversion='1.0'>
 <document form='AcmeChallenge'>
 <item name='ChallengeContent'><text>DOMINO-ACME-PROTOCOL-CHALLENGE-DATA-OK</text></item>
-<item name='ChallengeName'><text>/.well-known/acme-challenge/DOMINO-CertMgr-DiagChallenge-HTTP01</text></item></document>
+<item name='ChallengeName'><text>/.well-known/acme-challenge/letsdebug-test</text></item></document>
 </database>
 ```
 

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_11_0_1.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='11.0' maintenanceversion='1.0'>
+<document form='AcmeChallenge'>
+<item name='ChallengeContent'><text>DOMINO-ACME-PROTOCOL-CHALLENGE-DATA-OK</text></item>
+<item name='ChallengeName'><text>/.well-known/acme-challenge/letsdebug-test</text></item></document>
+</database>
