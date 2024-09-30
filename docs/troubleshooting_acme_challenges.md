@@ -135,7 +135,8 @@ In case you see no output use `-v` for more verbose output to see protocol infor
 
 In most cases a test in the following form (replacing your server name) should provide more detailed information.
 
-```curl -L -v http://www.acme.com/.well-known/acme-challenge/letsdebug-test
+```
+curl -L -v http://www.acme.com/.well-known/acme-challenge/letsdebug-test
 ```
 
 
@@ -144,7 +145,8 @@ In most cases a test in the following form (replacing your server name) should p
 
 If the test challenge was not uploaded you should see the following output:
 
-```Challenge NOT found
+```
+Challenge NOT found
 ```
 
 If the challenge was uploaded the output should look like this:
