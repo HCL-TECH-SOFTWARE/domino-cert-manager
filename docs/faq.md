@@ -7,13 +7,9 @@ has_children: false
 ---
 
 
-# How a trusted roots used?
+# How are trusted roots used?
 
-I imported our Root Certificate into the CertStore successfully. 
-Then I tried to import the intermediate certificate using the same process and Domino has a warning that it is not a Root certificate.
-Does this matter? If it does, how do I get Domino to recognize the intermediate certificate?
-
-The trusted roots are mainly designed for "root CA certificates".
+Trusted roots are mainly designed for "root CA certificates".
 
 Root certificates have multiple use cases in `certstore.nsf`. The main use case is to be the root certificate you trust.
 The certificate chain is usually provided by the remote server. They might send the root as well, but the root needs to be in the local trust store to validate it.
@@ -27,7 +23,47 @@ They can be selected as trusted roots. In Trusted Roots in the Certificates/Keys
 
 In addition trusted roots from `certstore.nsf` can be used in **OIDC** configurations (`idpcat.nsf`) and also as trusted roots for CScan/ICAM in `cscancfg.nsf`.
 
-So in summary: The warning is OK and now you know why there is a warning.
+
+# What does this warning mean: "Last cert in chain is NOT self signed - No root found"
+
+Only complete certificate chains can be validated end to end. If the last certificate in the chain is missing, CertMgr cannot know how many certificates are missing in the chain.
+If only the last certificate in the chain is missing (root), the certificate is perfectly OK.
+
+Browsers and other devices use their local trusted store to validate the certificate chain with the local trust store copy of the root certificate.
+It is still recommended to store the full chain so that Domino can send the complete chain.
+
+CertMgr always tries to auto complete the chain on any import operation, to ensure the certificate chain is complete.
+
+In most cases only the root is missing. This isn't a problem, but the best practice is to ensure the root is part of the TLS Credentials document.
+
+
+# Why is there a warning "Not a root certificate" when an intermediate certificate imported as a trusted root?
+
+Trusted roots are mainly intended to be stored to trust the certificate chain.
+They can be also used to complete the certificate chains. on import. Therefore it is supported to import intermediate certificates.
+
+The information is just a warning that this isn't a root certificate which is not used for any trust operation.
+The chain is always built from the certificate (leaf) with the provided certificate chain.
+Only the local root is used to trust the certificate chain.
+
+
+# How can I tell CertMgr to try to auto complete the chain when I added the trusted root to certstore.nsf meanwhile?
+
+There is no direct UI operation to re-import. But you can leverage the manual flow functionality.
+
+- Copy the complete PEM data of your certificate
+- Change the `Certificate provider` to `Manual` and note which other provider you had selected
+- Paste the PEM data into the certificate field in the `Manual` tab
+- Submit the request
+- Wait for the request to be processed and set the `Certificate provider` back to the original value
+
+
+# Where do I add the trusted roots for an outgoing secure LDAP (LDAPS) connection?
+
+The TLS Credentials entry specified in the server document is used for outgoing TLS connections.
+Specify roots to be trusted in the `Trusted Roots` section of the `Security/Keys` tab in this TLS Credentials document.
+
+The trusted roots available are picked from the Trusted roots in certstore.nsf.
 
 
 # Is creating a TLS credential from scratch using the CertStore "better" than Importing a TLS certificate from a KYR file or does it not matter?
@@ -35,12 +71,16 @@ So in summary: The warning is OK and now you know why there is a warning.
 Technically there is no "better" the certificates are the same and they are always stored in **PEM format**.
 You can see them in clear text in the TLS Credentials document. 
 
-Certstore only uses KYR an import format only. And never as a storage format. One of the design goals was to replace the "**kyr-file format**" with the standard PEM format. KYR is an old IBM format using two files. The KYR file itself is encrypted and the encryption key is stored in the STH file. 
+Certstore only supports the KYR file for import only. One of the design goals was to replace the "**KYR file format**" with the standard PEM format.
+KYR is an old IBM format using two files.
+The KYR file itself is encrypted and the encryption key is stored in the STH file. 
 
-The `.sth` file is just encoded and you can run a simple perl script to decode it.  When CertMgr reads a `.kyr` file it will always get the password from the .sth file with the same name. You don't need to specify it.
+The `.sth` file is just encoded and you can run a simple perl script to decode it.
+When CertMgr reads a `.kyr` file it will always get the password from the .sth file with the same name. You don't need to specify it.
 
 HCL recommends to use CertMgr and don't use KYR files any more. But the new TLS Cache has been implemented to be fully compatible to the old KYR cache and they are both enabled by default.
 The TLS cache will be asked first. Only if not key is found, the old KYR file cache is asked. 
+
 
 # How do I know if the HTTP task is using the TLS credentials in the Cert Store or still using the KYR file specified in the Internet site?
 
@@ -50,7 +90,8 @@ The new cache also understands KYR file names and uses them as a tag for lookup.
 But then the TLS credentials document needs to have the kyr-file name set (which is optional in the TLS Credentials document and intended for this use case).
 The right way is to always specify a DNS name. The new TLS Cache understands DNS names including wildcard certificates and supports multiple SANs.
 
-The kyr-file entry in server doc/internet site are just used as the trigger and the first lookup. When the client supports SNI the TLS Cache will take care to find the right TLS Credentials key entry based on the SANs (Subject Alternate Names) in the certificates.
+The KYR file entry in server doc/internet site are just used as the trigger and the first lookup.
+When the client supports SNI the TLS Cache will take care to find the right TLS Credentials key entry based on the SANs (Subject Alternate Names) in the certificates.
 
 To enable logging use the following setting:
 
@@ -106,7 +147,7 @@ However the KYR file name can be still used as a "tag" and can be used for a 1:1
 The recommended way is to specify a DNS name instead.
 
 
-If I try to import a PEM file it complains that "Cannot import without a private key". I have the private key, but how do you specify the key to use?
+# If I try to import a PEM file it complains that "Cannot import without a private key". I have the private key, but how do you specify the key to use?
 
 The PEM, PKCS12 (p12/pfx) formats allow to include the private key. The private key must be part of the imported file.
 
@@ -119,12 +160,12 @@ If the private key is protected with a password in the import file (PEM or PCKS1
 
 When importing a KYR file, it asks for the current password, but it doesn't validate that password when storing the credentials.
 
-Kyr-file imports use the password from the corresponding .sth file. The password specified in the dialog is only used for PEM and PKCS12.
+KYR file imports use the password from the corresponding .sth file. The password specified in the dialog is only used for PEM and PKCS12.
 
 
 # Why do I get the error "The encrypted data has been modified or the wrong key was used to decrypt it"
 
-Please refer to the following technote for  possible reasons.
+Please refer to the following technote for possible reasons.
 
 [CertMgr error: The encrypted data has been modified or the wrong key was used to decrypt it](https://support.hcltechsw.com/csm?id=kb_article&sysparm_article=KB0105749)
 
@@ -142,7 +183,7 @@ To import TLS Credentials please use a 12.0.1/12.0.2 client until 14.0 FP1 ships
 
 # Do I need to restart my Internet tasks when a TLS Credentials document changes
 
-Once certstore.nsf is in place all internet tasks (HTTP, SMTP, POP3, IMAP, LDAP) and also other applications based on the Domino stack use the new TLS Cache automatically.
+Once `certstore.nsf` is in place all internet tasks (HTTP, SMTP, POP3, IMAP, LDAP) and also other applications based on the Domino stack use the new TLS Cache automatically.
 Because the TLS cache is initialized at startup of the process, you have to start it once after the database is created/replicated to the server.
 
 From then on the TLS Cache is immediately updated on the fly as soon a change is made to a relevant TLS Credentials document for a server.
@@ -151,7 +192,8 @@ A dedicated thread on each process takes care of managing the cache. The cache r
 
 # How can I migrate all my KYR files to TLS Credentials documents.
 
-Cert manage has a command to import a single kyr file and also all configured kyr files on a server.
-Each kyr file will only imported once.
+Cert manage has a command to import a single KYR file and also all configured KYR files on a server.
+Each KYR file will only imported once.
 
-As soon the TLS credentials are created, the existing *.kyr files and *.sth files should be removed from the server to avoid old kyr files would be used, if the new TLS Cache can't find a matching key.
+As soon the TLS credentials are created, the existing *.kyr files and *.sth files should be removed from the server to avoid old KYR files would be used, if the new TLS Cache can't find a matching key.
+
