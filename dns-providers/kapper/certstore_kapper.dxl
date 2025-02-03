@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_14_0.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='14.0' replicaid='C1256D330E72D28B'
+ path='CN=domino/O=ACME!!certstore.nsf' title='Certificate Store' fromtemplate='StdCertificateStore'
+ maintainunread='false' increasemaxfields='true' compressdesign='true' compressdata='true'
+ copyprofiledocswithdesign='true' showinopendialog='false' advancedtemplate='true'
+ overwritefreespace='false'>
+<databaseinfo dbid='C125871500323981' odsversion='55' diskspace='6815744'
+ percentused='89.0887920673077' numberofdocuments='733'><datamodified><datetime
+>20250203T102110,80+01</datetime></datamodified><designmodified><datetime
+>20241230T180913,40+01</datetime></designmodified></databaseinfo>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='23e6' unid='78B9715157BDE2D5C1258C260025A3CA' sequence='7'>
+<created><datetime>20250203T075107,62+01</datetime></created>
+<modified><datetime>20250203T102110,80+01</datetime></modified>
+<revised><datetime>20250203T102110,79+01</datetime></revised>
+<lastaccessed><datetime>20250203T102110,79+01</datetime></lastaccessed>
+<addedtofile><datetime>20250203T075515,31+01</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Herwig Schauer/OU=Austria/O=PNP-HCL</name></updatedby>
+<revisions><datetime>20250203T075515,31+01</datetime><datetime>20250203T080328,48+01</datetime><datetime
+>20250203T094018,37+01</datetime><datetime>20250203T094117,52+01</datetime><datetime
+>20250203T100634,61+01</datetime><datetime>20250203T101344,34+01</datetime></revisions>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'/>
+<par def='1'>Version 1.0 leverages API Version 1.2 and performs add and delete operations via domain name and record name (and not via domain id and record id)</par>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0500in' refwidth='9.8431in'><tablecolumn width='1.9688in'/><tablecolumn
+ width='7.8743in'/>
+<tablerow>
+<tablecell columnspan='2' borderwidth='0px'>
+<pardef id='3' leftmargin='0' spacebefore='2' spaceafter='1.5' keepwithnext='true'
+ keeptogether='true'/>
+<par def='3'><run><font size='12pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='#191919'/>Configuration Values</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='4' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>DNS zone:</run></par></tablecell>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='5' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='5'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='green'/>&lt;domain_name&gt;</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>User name:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='6' leftmargin='0' rightmargin='7.8063in' keepwithnext='true' keeptogether='true'/>
+<par def='6'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Email address:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='6'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Password:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='5'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='7' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='7'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Authorization key:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='6'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='green'/>&lt;APIKey&gt;</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='7'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Authorization token:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='5'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='green'/>&lt;APISecret&gt;</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell borderwidth='1px 0px 0px' bgcolor='white'>
+<pardef id='8' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='8'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Custom value:</run></par></tablecell>
+<tablecell borderwidth='1px 0px 0px' bgcolor='white'>
+<pardef id='9' keepwithnext='true' keeptogether='true'/>
+<par def='9'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></tablecell></tablerow></table>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>42</number></item>
+<item name='EnableTracing'><text>1</text></item>
+<item name='ReqLookupHttpType'><text>G</text></item>
+<item name='ReqQryAddHttpType'><text/></item>
+<item name='ReqAddHttpType'><text>G</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text>G</text></item>
+<item name='Comments'><richtext>
+<pardef id='10' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='10'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>Kapper</text></item>
+<item name='ProviderName'><text>Kapper Network-Communications GmbH - kapper.net</text></item>
+<item name='Website'><text>https://kapper.net</text></item>
+<item name='DocumentationURL'><text>API Version 1.2</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>Herwig W. Schauer (HCL Lab-Services)</text></item>
+<item name='ReferenceURL'><text>https://dnspanel.kapper.net/</text></item>
+<item name='StatusFormula'><text>@if (retJSON_Add.OK = "false"; 400; 200)</text></item>
+<item name='cfg_URL'><text>https://dnspanel.kapper.net/API/1.2</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text/></item>
+<item name='ReqQryAddHeaderFormula'><text/></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>cfg_URL + "/?action=new&amp;subject=" + cfg_DnsZone + "&amp;APIKey=" + cfg_AuthKey + "&amp;APISecret=" + cfg_AuthToken + "&amp;data=" + @URLEncode("Domino";"{\"name\":\"" + param_DnsTxtName + "\",\"type\":\"TXT\",\"content\":\"" + param_DnsTxtValue +"\",\"ttl\":\"60\",\"prio\":\"\"}")</text></item>
+<item name='ReqAddHeaderFormula'><text/></item>
+<item name='ReqAddPostDataFormula'><text/></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text>cfg_URL + "/?action=del&amp;subject=" + param_DnsTxtName + "&amp;APIKey=" + cfg_AuthKey + "&amp;APISecret=" + cfg_AuthToken</text></item>
+<item name='ReqDelHeaderFormula'><text/></item>
+<item name='ReqDelPostDataFormula'><text/></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentAddName'><text/></item>
+<item name='AgentDelName'><text/></item></document>
+</database>
+
