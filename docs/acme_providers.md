@@ -53,28 +53,6 @@ Directory URL
 https://acme-staging-v02.api.letsencrypt.org/directory
 ```
 
-
-## bypass
-
-[bypass](https://buypass.com/) a certificate provider from Norway offers free ACME based certificates and also commercial certificates.
-
-### Main features
-
-- RSA 4096 and ECDSA NIST P-256 support only
-- But valid for 6 month!
-- Wildcard certificates
-- No registration required
-- Own root CA
-- Trusted root needs to be imported into `certstore.nsf`  
-Import from here: https://www.buypass.com/security/buypass-root-certificates
-
-Directory URL
-
-```
-https://api.buypass.com/acme/directory
-```
-
-
 ## ZeroSSL
 
 [ZeroSSL](https://zerossl.com) offers free ACME based certificates and also commercial certificates
