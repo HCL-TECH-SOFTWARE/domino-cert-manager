@@ -51,7 +51,7 @@ It works in combination with CNAME validation for domains hosted at a different 
 ## Hetzner
 
 [Hetzner](https://www.hetzner.com/) is a German based internet service provider providing free DNS services with a [DNS-API](https://docs.hetzner.cloud/reference/hetzner).
-Starting November 2025 Hetzner moved their DNS interface to the general [Cloud general cloud console](https://console.hetzner.com).
+Starting November 2025 Hetzner moved their DNS interface to the [Cloud console](https://console.hetzner.com).
 This update makes it possible to manage DNS domains in separate projects cloud use spearate API tokens per project. 
 
 Until moved to the new console continue to use the existing legacy API.

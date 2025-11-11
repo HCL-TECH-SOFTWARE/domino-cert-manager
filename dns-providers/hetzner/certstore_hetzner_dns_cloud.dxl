@@ -94,7 +94,7 @@
  truetype='false' familyid='20'/></run></par></richtext></item>
 <item name='AdminAccess' authors='true' names='true' protected='true'><text
 >[Administrator]</text></item>
-<item name='DnsProviderConfigName'><text>hetzner-dns-cloud-api</text></item>
+<item name='DnsProviderConfigName'><text>HetznerCloud</text></item>
 <item name='ProviderName'><text>Hetzner Online GmbH</text></item>
 <item name='Website'><text>https://www.hetzner.com</text></item>
 <item name='DocumentationURL'><text>https://docs.hetzner.cloud/reference/hetzner</text></item>
