@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.4'
+ replicaid='C125859E0E5D290D' path='CN=notes.nashcom.de/OU=Srv/O=NashCom-Net!!certstore.nsf'
+ title='Certificate Store' fromtemplate='StdCertificateStore' increasemaxfields='true'
+ compressdesign='true' compressdata='true' copyprofiledocswithdesign='true'>
+<databaseinfo dbid='C12585D300209234' odsversion='55' diskspace='2359296'
+ percentused='87.0659722222222' numberofdocuments='104'><datamodified><datetime
+>20251111T155822,41+00</datetime></datamodified><designmodified><datetime
+>20251111T111957,18+00</datetime></designmodified></databaseinfo>
+<fulltextsettings size='14281668' update='immediate' includeencryptedfields='false'><lastindexed
+><datetime>20251111T160254,79+00</datetime></lastindexed></fulltextsettings>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='1d9a' unid='A8C77D1DE293D473002586D600299455' sequence='54'>
+<created><datetime>20210515T073409,49+00</datetime></created>
+<modified><datetime>20251111T155822,41+00</datetime></modified>
+<revised><datetime>20251111T155822,40+00</datetime></revised>
+<lastaccessed><datetime>20251111T155822,40+00</datetime></lastaccessed>
+<addedtofile><datetime>20210515T073410,46+00</datetime></addedtofile></noteinfo>
+<revisions><datetime>20251111T081702,14+00</datetime><datetime>20251111T083752,44+00</datetime></revisions>
+<textproperties>
+<textproperty propid='0' language='EN'/></textproperties>
+<item name='Log'><text/></item>
+<item name='Status'><text/></item>
+<item name='AgentNameAdd'><text/></item>
+<item name='AgentNameDel'><text/></item>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run><span propid='0' regionid='1'><run
+><font size='9pt'/>The Hetzner integration is based on the official Hetzner DNS Cloud API used to manage DNS records in the integrated Cloud management interface.</run></span></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/>If your DNS entries are not yet migrated use the existing separate DNS API.</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/>Both APIs are not compatible with each other.</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/>The configuration requires an </run><run
+><font size='9pt' style='bold'/>API authorization token</run><run><font size='9pt'/> only. A DNS Zone is not required.</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<pardef id='2' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='2'><region regionid='1'/></par>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0201in' refwidth='9.8431in'><tablecolumn width='1.9688in'/><tablecolumn
+ width='7.8743in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='3' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>DNS Zone:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='4' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='4'><region regionid='1'><run><font size='9pt' color='green'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>Username:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='5' leftmargin='0' rightmargin='7.8063in' keepwithnext='true' keeptogether='true'/>
+<par def='5'><region regionid='1'><run><font size='9pt'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>email Address:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='5'><region regionid='1'><run><font size='9pt' color='maroon'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>Password:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><region regionid='1'><run><font size='9pt'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='6' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='6'><region regionid='1'><run><font size='9pt' style='bold'/>Authorization Key:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='5'><region regionid='1'><run><font size='9pt' color='maroon'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='6'><region regionid='1'><run><font size='9pt' style='bold'/>Authorization Token:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='4'><region regionid='1'><run><font size='9pt' color='green'/>my-access-token</run></region></par></tablecell></tablerow></table>
+<par def='2'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='2'><region regionid='1' end='true'><run><font size='9pt'/></run></region><run
+><font size='9pt' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>42</number></item>
+<item name='EnableTracing'><text>2</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text/></item>
+<item name='ReqAddHttpType'><text>P</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text>P</text></item>
+<item name='Comments'><richtext>
+<pardef id='7' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='7'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>hetzner-dns-cloud-api</text></item>
+<item name='ProviderName'><text>Hetzner Online GmbH</text></item>
+<item name='Website'><text>https://www.hetzner.com</text></item>
+<item name='DocumentationURL'><text>https://docs.hetzner.cloud/reference/hetzner</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>Nash!Com</text></item>
+<item name='ReferenceURL'><text/></item>
+<item name='StatusFormula'><text>@if (ret_AddStatus = 201; 200; 400)</text></item>
+<item name='cfg_URL'><text>https://api.hetzner.cloud/v1</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text/></item>
+<item name='ReqQryAddHeaderFormula'><text/></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>X:=@if (cfg_DnsZone = ""; param_RegisteredDomain; cfg_DnsZone);<break
+/>cfg_URL + "/zones/" + X + "/rrsets/" + @Left(param_DnsTxtName;"."+ param_RegisteredDomain) + "/TXT/actions/add_records"</text></item>
+<item name='ReqAddHeaderFormula'><text>("Authorization: Bearer " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqAddPostDataFormula'><text>X:=@Left(param_DnsTxtName;"."+ param_RegisteredDomain);<break
+/>'{"name":"' + X + '","type":"TXT","ttl":60,"records":[{"value": "\\"' + param_DnsTxtValue +'\\"","comment":"Created by Domino CertMgr"}]}'</text></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text>X:=@if (cfg_DnsZone = ""; param_RegisteredDomain; cfg_DnsZone);<break
+/>cfg_URL + "/zones/" + X + "/rrsets/" + @Left(param_DnsTxtName;"."+ param_RegisteredDomain) + "/TXT/actions/remove_records"</text></item>
+<item name='ReqDelHeaderFormula'><text>("Authorization: Bearer " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqDelPostDataFormula'><text>X:=@Left(param_DnsTxtName;"."+ param_RegisteredDomain);<break
+/>'{"name":"' + X + '","type":"TXT","ttl":60,"records":[{"value": "\\"' + param_DnsTxtValue +'\\"","comment":"Created by Domino CertMgr"}]}'</text></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentAddName'><text/></item>
+<item name='AgentDelName'><text/></item></document>
+</database>
+
