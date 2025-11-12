@@ -65,8 +65,7 @@ As soon a DNS domain is migrated, the new API is required.
 - 2FA for secure admin interface authentication
 
 
-[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/hetzner/certstore_hetzner.dxl)
-
+[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/hetzner/certstore_hetzner_dns_cloud.dxl)
 
 
 ## ACME-DNS
