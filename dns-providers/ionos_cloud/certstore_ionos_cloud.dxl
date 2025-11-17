@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_12_0_2.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='12.0' maintenanceversion='2.4'
+ replicaid='C12584940E687082' path='certstore.nsf' title='Certificate Store'
+ fromtemplate='StdCertificateStore' increasemaxfields='true' compressdesign='true'
+ compressdata='true' copyprofiledocswithdesign='true' showinopendialog='false'
+ allowheadlinemonitors='false'>
+<databaseinfo dbid='C1258780002D1877' odsversion='55' diskspace='4980736'
+ percentused='80.2580180921053' numberofdocuments='146'><datamodified><datetime
+>20251117T083524,57+00</datetime></datamodified><designmodified><datetime
+>20251112T010036,43+00</datetime></designmodified></databaseinfo>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='31f1e' unid='2D434289BF45FD0200258D4300788498' sequence='12'>
+<created><datetime>20251115T215622,64+00</datetime></created>
+<modified><datetime>20251116T080534,55+00</datetime></modified>
+<revised><datetime>20251116T080534,54+00</datetime></revised>
+<lastaccessed><datetime>20251116T080534,54+00</datetime></lastaccessed>
+<addedtofile><datetime>20251115T215622,68+00</datetime></addedtofile></noteinfo>
+<revisions><datetime>20251115T215622,68+00</datetime><datetime>20251115T220234,04+00</datetime><datetime
+>20251115T231731,93+00</datetime></revisions>
+<textproperties>
+<textproperty propid='0' language='EN'/></textproperties>
+<item name='Log'><text/></item>
+<item name='Status'><text/></item>
+<item name='AgentNameAdd'><text/></item>
+<item name='AgentNameDel'><text/></item>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run><span propid='0' regionid='1'><run
+><font size='9pt'/>The IONOS Cloud DNS integration is based on the official IONOS Cloud API used to manage DNS records in the integrated Cloud management interface.</run></span></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/>The configuration requires an </run><run
+><font size='9pt' style='bold'/>API authorization token</run><run><font size='9pt'/> only. A </run><run
+><font size='9pt' style='bold'/>DNS Zone</run><run><font size='9pt'/> is optional and can be looked up by the API.</run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt' name='Helvetica Neue'
+ pitch='variable' truetype='false' familyid='20'/></run></region></par>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0201in' refwidth='9.8431in'><tablecolumn width='1.9688in'/><tablecolumn
+ width='7.8743in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='3' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>DNS Zone:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='4' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='4'><region regionid='1'><run><font size='9pt' color='green'/>optional zone (if not provided it is looked up)</run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>Username:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='5' leftmargin='0' rightmargin='7.8063in' keepwithnext='true' keeptogether='true'/>
+<par def='5'><region regionid='1'><run><font size='9pt'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>email Address:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='5'><region regionid='1'><run><font size='9pt' color='maroon'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>Password:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><region regionid='1'><run><font size='9pt'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>Authorization Key:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='5'><region regionid='1'><run><font size='9pt' color='maroon'/></run></region></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='3'><region regionid='1'><run><font size='9pt' style='bold'/>Authorization Token:</run></region></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='4'><region regionid='1'><run><font size='9pt' color='green'/>my-access-token</run></region></par></tablecell></tablerow></table>
+<par def='1'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='1'><region regionid='1' end='true'><run><font size='9pt'/></run></region><run
+><font size='9pt' name='Helvetica Neue' pitch='variable' truetype='false'
+ familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>30</number></item>
+<item name='EnableTracing'><text>1</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text>G</text></item>
+<item name='ReqAddHttpType'><text>P</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text>D</text></item>
+<item name='Comments'><richtext>
+<pardef id='6' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='6'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>IONOS Cloud DNS</text></item>
+<item name='ProviderName'><text>IONOS</text></item>
+<item name='Website'><text>https://www.ionos.de</text></item>
+<item name='DocumentationURL'><text>https://api.ionos.com/docs/dns/v1</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>Nash!Com</text></item>
+<item name='ReferenceURL'><text/></item>
+<item name='StatusFormula'><text>@if (ret_AddStatus &gt;= 200 &amp; ret_AddStatus &lt; 300; 200; 400)</text></item>
+<item name='cfg_URL'><text>https://dns.de-fra.ionos.com</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text>@If (""= cfg_DnsZone; cfg_URL + "/zones?filter.zoneName=" + param_RegisteredDomain; "")</text></item>
+<item name='ReqQryAddHeaderFormula'><text>("Authorization: Bearer " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>ZoneID:=@If (cfg_DnsZone=""; retJSON_QryAdd.items.0.id; cfg_DnsZone);<break
+/>cfg_URL + "/zones/" + ZoneID + "/records"</text></item>
+<item name='ReqAddHeaderFormula'><text>("Authorization: Bearer " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqAddPostDataFormula'><text>X:=@Left(param_DnsTxtName;"."+ param_RegisteredDomain);<break
+/>'{"properties": {"name":"' + X + '","type":"TXT","content": "\\"' + param_DnsTxtValue +'\\"","ttl":60,"enabled":true}}'</text></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text>ZoneID:=@If (cfg_DnsZone=""; retJSON_QryAdd.items.0.id; cfg_DnsZone);<break
+/>@if (retJSON_Add.id = ""; ""; cfg_URL + "/zones/" + ZoneID + "/records/" + retJSON_Add.id)</text></item>
+<item name='ReqDelHeaderFormula'><text>("Authorization: Bearer " + cfg_AuthToken ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqDelPostDataFormula'><text/></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentAddName'><text/></item>
+<item name='AgentDelName'><text/></item></document>
+</database>
+

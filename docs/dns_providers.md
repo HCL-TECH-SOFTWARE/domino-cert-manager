@@ -52,7 +52,7 @@ It works in combination with CNAME validation for domains hosted at a different 
 
 [Hetzner](https://www.hetzner.com/) is a German based internet service provider providing free DNS services with a [DNS-API](https://docs.hetzner.cloud/reference/hetzner).
 Starting November 2025 Hetzner moved their DNS interface to the [Cloud console](https://console.hetzner.com).
-This update makes it possible to manage DNS domains in separate projects cloud use spearate API tokens per project. 
+This update makes it possible to manage DNS domains in separate projects cloud use spearate API tokens per project.
 
 Until moved to the new console continue to use the existing legacy API.
 As soon a DNS domain is migrated, the new API is required.
@@ -65,7 +65,20 @@ As soon a DNS domain is migrated, the new API is required.
 - 2FA for secure admin interface authentication
 
 
-[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/hetzner/certstore_hetzner_dns_cloud.dxl)
+# IONOS Cloud
+
+[IONOS Cloud](https://www.ionos.de) is a German based internet service provider providing free DNS services with a [DNS-API](https://api.ionos.com/docs/dns/v1).
+
+### Main features
+
+- DNS service
+- REST based DNS TXT interface
+- Allows sub domain DNS services
+- Support for DNSSEC
+
+
+[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/ionos_cloud/certstore_ionos_cloud.dxl)
+
 
 
 ## ACME-DNS
