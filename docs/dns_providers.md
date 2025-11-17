@@ -57,6 +57,7 @@ This update makes it possible to manage DNS domains in separate projects cloud u
 Until moved to the new console continue to use the existing legacy API.
 As soon a DNS domain is migrated, the new API is required.
 
+[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/hetzner/certstore_hetzner_dns_cloud.dxl)
 
 ### Main features
 
