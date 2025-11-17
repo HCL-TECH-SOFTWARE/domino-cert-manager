@@ -65,7 +65,7 @@ As soon a DNS domain is migrated, the new API is required.
 - 2FA for secure admin interface authentication
 
 
-# IONOS Cloud
+## IONOS Cloud
 
 [IONOS Cloud](https://www.ionos.de) is a German based internet service provider providing free DNS services with a [DNS-API](https://api.ionos.com/docs/dns/v1).
 
