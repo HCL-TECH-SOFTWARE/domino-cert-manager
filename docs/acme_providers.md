@@ -66,10 +66,30 @@ https://acme-staging-v02.api.letsencrypt.org/directory
 - No ACME account rollover
 - Certificate root is Comodo
 - Trusted root needs to be imported into `certstore.nsf`  
-Import from Notes client cacerts.pem
 
 Directory URL
 
 ```
 https://acme.zerossl.com/v2/DV90
 ```
+
+
+## Actalis
+
+[Actalis](https://www.actalis.com) offers free ACME based certificates and also commercial certificates
+
+### Main features
+
+- Valid for 90 days (Option for 1 year for commercial certs)
+- RSA 4096 and maximum ECDSA NIST P-384 support
+- Wildcard certificates (only commercial)
+- Requires registration and External Account Binding configured for the account on CertMgr side
+- Trusted root needs to be imported into `certstore.nsf`
+
+Directory URL
+
+```
+https://acme-api.actalis.com/acme/directory
+```
+
+
