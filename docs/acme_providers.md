@@ -12,7 +12,7 @@ has_children: false
 
 ## ACME protocol
 
-The ACME protocol is defined in [RFC8739](https://tools.ietf.org/html/rfc8739). Let's Encrypt is the main provider and inventor of ACME based certificate issuing.
+The ACME protocol is defined in [RFC8555](https://tools.ietf.org/html/rfc8555). Let's Encrypt is the main provider and inventor of ACME based certificate issuing.
 
 Let's Encrypt Production and Staging are included in `certmgr.ntf`. 
 Additional providers can be added manually by specifying the ACME directory URL.
