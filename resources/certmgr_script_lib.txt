@@ -1,0 +1,977 @@
+
+' Declare for C-API function
+Declare Function WIN_CertStoreTLSImportExport Lib "nnotes.dll" Alias "CertStoreTLSImportExport" (Byval wAction As Integer, Byval wOptionBits As Integer, Byval hNote As Long, Byval CertMgrServerName As Lmbcs String, Byval ServerWithAccess As Lmbcs String, Byval FileName As Lmbcs String, Byval CurrentPassword As Lmbcs String, Byval NewPassword As Lmbcs String, Byval FriendlyName As Lmbcs String) As Integer
+Declare Function LUX_CertStoreTLSImportExport Lib "libnotes.so" Alias "CertStoreTLSImportExport" (Byval wAction As Integer, Byval wOptionBits As Integer, Byval hNote As Long, Byval CertMgrServerName As Lmbcs String, Byval ServerWithAccess As Lmbcs String, Byval FileName As Lmbcs String, Byval CurrentPassword As Lmbcs String, Byval NewPassword As Lmbcs String, Byval FriendlyName As Lmbcs String) As Integer
+Declare Function MAC_CertStoreTLSImportExport Lib "libnotes.dylib" Alias "CertStoreTLSImportExport" (Byval wAction As Integer, Byval wOptionBits As Integer,Byval hNote As Long, Byval CertMgrServerName As Lmbcs String, Byval ServerWithAccess As Lmbcs String, Byval FileName As Lmbcs String, Byval CurrentPassword As Lmbcs String, Byval NewPassword As Lmbcs String, Byval FriendlyName As Lmbcs String) As Integer
+
+Class CertMgrUtils
+
+    Private m_Session      As NotesSession
+    Private m_DomDirDb     As NotesDatabase
+    Private m_CertstoreDb  As NotesDatabase
+    Private m_CurrentDb    As NotesDatabase
+
+    Private m_bEnableErrorHandler  As Boolean
+
+    Private m_DataDirectory      As String
+    Private m_CurrentUser        As String
+    Private m_CurrentServer      As String
+    Private m_CertMgrServer      As String
+    Private  m_Domain            As String
+    Private  m_DomainAdminServer As String
+
+    Private m_IsServer       As Boolean
+    Private m_IsWindows      As Boolean
+    Private m_IsW32          As Boolean
+    Private m_IsW64          As Boolean
+    Private m_IsLinux        As Boolean
+    Private m_IsMac          As Boolean
+    Private m_DryRun         As Boolean
+
+    Private m_CRLF           As String
+    Private m_DirSep         As String
+    Private m_Quote          As String
+    Private  m_ErrorString   As String
+    Private  m_LogLevel      As Long
+
+
+    Sub SetDryRun (X As Boolean)
+        m_DryRun = X
+    End Sub
+
+
+    Sub SetAdminServer (X As String)
+        m_DomainAdminServer = X
+    End Sub
+
+
+    Sub SetCertMgrServer (X As String)
+        m_CertMgrServer = X
+    End Sub
+
+
+    Sub New ()
+
+        m_bEnableErrorHandler = False
+
+        Set m_Session = New NotesSession()
+
+        If ("2" = m_Session.GetEnvironmentString ("KitType", True)) Then
+            m_IsServer = True
+        End If
+
+        Call GetPlatformInfo()
+
+        m_CRLF = Chr(13) + Chr(10)
+
+        If (m_IsWindows) Then
+            m_DirSep = "\"
+            m_Quote = {"}
+        Else
+            m_DirSep = "/"
+            m_Quote = {"}
+        End If
+
+        Set m_CurrentDb   = m_Session.Currentdatabase
+
+        m_DataDirectory = m_Session.Getenvironmentstring ("Directory", True)
+        m_CurrentUser = m_Session.UserName
+        m_CurrentServer   = m_CurrentDb.Server
+
+        Call ReadConfig()
+
+    End Sub
+
+
+    Sub DumpConfig()
+
+        Messagebox "IsServer: " + Cstr (m_IsServer)
+        Messagebox "AdminServer: " + m_DomainAdminServer
+        Messagebox "CertMgrServer: " + m_CertMgrServer
+
+        Call OpenCertstoreDatabase()
+        Call OpenDominoDirectory()
+
+        Messagebox m_DomDirDb.Server
+        Messagebox m_CertstoreDb.Server
+
+    End Sub
+
+    Private Sub GetPlatformInfo ()
+
+        If (Instr(m_session.Platform, "Windows") > 0) Then
+
+            m_IsWindows = True
+
+            If (Instr(m_session.Platform, "64") > 0) Then
+                m_IsW64 = True
+            Else
+                m_IsW32 = True
+            End If
+
+        Elseif (Instr(m_session.Platform, "Linux") > 0) Then
+
+            m_IsLinux = True
+
+        Elseif (Instr(m_session.Platform, "Mac") > 0) Then
+
+            m_IsMac = True
+
+        Else
+            Exit Sub
+        End If
+    End Sub
+
+
+    Private Sub ReadConfig ()
+
+        Dim db As NotesDatabase
+        Dim ProfileDoc As NotesDocument
+
+        If ("" = m_DomainAdminServer) Then
+            m_DomainAdminServer = m_CurrentDB.Server
+
+            If ("" = m_DomainAdminServer) Then
+                If (m_IsServer) Then
+                    m_DomainAdminServer = m_CurrentUser
+                End If
+            End If
+        End If
+
+        Set db = New NotesDatabase (m_DomainAdminServer, "names.nsf")
+
+        Set ProfileDoc = db.GetProfileDocument ("DirectoryProfile")
+
+        m_Domain            = ProfileDoc.Domain(0)
+        m_DomainAdminServer = ProfileDoc.AdminServer(0)
+
+        If ("" = m_CertMgrServer) Then
+            m_CertMgrServer     = ProfileDoc.CertMgrServer(0)
+        End If
+
+    End Sub
+
+
+    Function FindTrustedRootInDomDir (DominoDirectoryDb As NotesDatabase, doc As NotesDocument) As NotesDocument
+
+        Dim nc As NotesNoteCollection
+        Dim KeyIdentifier As String
+        Dim Formula As String
+        Dim NoteID As String
+
+        KeyIdentifier = doc.KeyIdentifier(0)
+        Formula = "(Form = {Certifier}) & (!@IsAvailable($Conflict)) & (KeyIdentifier = {" +  KeyIdentifier + "})"
+
+        Set nc = DominoDirectoryDb.CreateNoteCollection(False)
+
+        nc.SelectDocuments = True
+        nc.SelectionFormula = Formula
+
+        Call nc.BuildCollection
+        If (0 = nc.Count) Then
+            Exit Function
+        End If
+
+        NoteID = nc.GetFirstNoteId
+        Set FindTrustedRootInDomDir = DominoDirectoryDb.GetDocumentByID (NoteID)
+
+    End Function
+
+
+    Function CopyTrustedRootToDominoDirectory (doc As NotesDocument, DominoDirectoryDb As NotesDatabase) As Integer
+
+        Dim TrustedRootDoc As NotesDocument
+        Dim Item As NotesItem
+        Dim bUpd As Boolean
+        Dim bNewDoc As Boolean
+
+        On Error Goto error_handler
+
+        CopyTrustedRootToDominoDirectory = -1
+
+        If ("Certificate" = doc.Form(0)) Then
+            Exit Function
+        End If
+
+        If ("" = doc.UserCertificate(0)) Then
+            Exit Function
+        End If
+
+        If ("" = doc.KeyIdentifier(0)) Then
+            Exit Function
+        End If
+
+        If (m_DryRun) Then
+            Messagebox  "Copy document " + Cstr (doc.NoteID) + " from [" + doc.ParentDatabase.Server + "!!" + doc.ParentDatabase.FilePath + "] to ["  + DominoDirectoryDb.Server + "!!" + DominoDirectoryDb.FilePath + "]"
+            Exit Function
+        End If
+
+        Set TrustedRootDoc = FindTrustedRootInDomDir  (DominoDirectoryDb, doc)
+
+        If (TrustedRootDoc Is Nothing) Then
+            Set TrustedRootDoc = doc.CopyToDatabase (DominoDirectoryDb)
+            Exit Function
+        End If
+
+        Set Item = TrustedRootDoc.GetFirstItem ("UserCertificate")
+
+        If (Item Is Nothing) Then
+            ' Document is already copied. But this should never happen
+            Exit Function
+        End If
+
+        ' Correct Summary flag which is not set in CertStore document
+        If (False = item.IsSummary) Then
+            item.IsSummary = True
+            bUpd = True
+        End If
+
+        'Fix missing item in older documents
+        If ("Certifier" <> TrustedRootDoc.Type(0)) Then
+            TrustedRootDoc.Type = "Certifier"
+            bUpd = True
+        End If
+
+        ' Fix missing item in older documents
+        If ("" = TrustedRootDoc.IssuedTo(0)) Then
+            TrustedRootDoc.IssuedTo = doc.CertIssuedTo(0)
+            bUpd = True
+        End If
+
+        'Just in case set this item value
+        If ("1" <> TrustedRootDoc.CertificateType(0)) Then
+            TrustedRootDoc.CertificateType = "1"
+            bUpd = True
+        End If
+
+        ' Remove items from CertStore which must not be present in Domino Directory documents
+        If (TrustedRootDoc.HasItem ("Status")) Then
+            Call TrustedRootDoc.RemoveItem ("Status")
+            bUpd = True
+        End If
+
+        If (TrustedRootDoc.HasItem ("Category")) Then
+            Call TrustedRootDoc.RemoveItem ("Category")
+            bUpd = True
+        End If
+
+        If (TrustedRootDoc.HasItem ("RestictUseToCategory")) Then
+            Call TrustedRootDoc.RemoveItem ("RestictUseToCategory")
+            bUpd = True
+        End If
+
+        ' Only update if anything changed
+        If (False = bUpd) Then
+            Exit Function
+        End If
+
+        Call TrustedRootDoc.Save(True, False)
+
+        If (bNewDoc) Then
+            CopyTrustedRootToDominoDirectory = 2
+        Else
+            CopyTrustedRootToDominoDirectory = 1
+        End If
+
+        Exit Function
+
+error_handler:
+
+        Exit Function
+
+    End Function
+
+
+    Function CopyAllTrustedRootsToDominoDir () As Integer
+
+        Dim CountDocNew As Integer
+        Dim CountDocUpd As Integer
+        Dim CountDocError As Integer
+        Dim ret As Integer
+
+        Dim collection As NotesDocumentCollection
+        Dim doc As NotesDocument
+        Dim formula As String
+
+        On Error Goto error_handler
+
+        If (Not OpenDominoDirectory()) Then
+            CopyAllTrustedRootsToDominoDir = -1
+            Exit Function
+        End If
+
+        If (Not OpenCertstoreDatabase()) Then
+            CopyAllTrustedRootsToDominoDir = -1
+            Exit Function
+        End If
+
+        formula = "(Form = ""Certifier"") & (!@IsAvailable($Conflict))"
+
+        Set collection = m_CertstoreDb.Search(formula, Nothing, 0)
+
+        If (collection Is Nothing) Then Exit Function
+        If (collection.Count = 0) Then Exit Function
+
+        Set doc = collection.GetFirstDocument()
+
+        While Not (doc Is Nothing)
+
+            ret = CopyTrustedRootToDominoDirectory(doc, m_DomDirDb)
+
+            If (ret = -1) Then
+                CountDocError = CountDocError + 1
+            Elseif (ret = 1) Then
+                CountDocUpd = CountDocUpd + 1
+            Elseif (ret = 2) Then
+                CountDocNew = CountDocNew + 1
+            End If
+
+            Set doc = collection.GetNextDocument(doc)
+        Wend
+
+        CopyAllTrustedRootsToDominoDir = CountDocUpd + CountDocNew
+
+        Exit Function
+
+error_handler:
+
+        CopyAllTrustedRootsToDominoDir = -1
+        Exit Function
+
+    End Function
+
+
+    Function InteractiveCopyTrustedRootsToDominoDir () As String
+
+        Dim CountDocNew As Long
+        Dim CountDocUpd As Long
+        Dim CountDocError As Long
+        Dim ret As Integer
+
+        Dim level As Integer
+        Dim Collection As NotesDocumentCollection
+        Dim doc As NotesDocument
+
+        Const DialogTitle = "Trusted Roots Domino Directory Sync"
+
+        On Error Goto error_handler
+
+        If (Not OpenDominoDirectory()) Then
+            InteractiveCopyTrustedRootsToDominoDir = "Cannot open Domino Directory"
+            Exit Function
+        End If
+
+        Set collection = m_CurrentDB.UnprocessedDocuments
+
+        If (collection Is Nothing) Then Exit Function
+        If (collection.Count = 0) Then Exit Function
+
+        Set doc = collection.GetFirstDocument()
+
+        While Not(doc Is Nothing)
+            ret = CopyTrustedRootToDominoDirectory (doc, m_DomDirDb)
+
+            If (ret = -1) Then
+                CountDocError = CountDocError + 1
+            Elseif (ret = 1) Then
+                CountDocUpd = CountDocUpd + 1
+            Elseif (ret = 2) Then
+                CountDocNew = CountDocNew + 1
+            End If
+
+            Set doc = collection.GetNextDocument(doc)
+        Wend
+
+        Messagebox "Trusted Roots Update: " +  Cstr (CountDocUpd) + ", Added: " + Cstr (CountDocNew), 64, DialogTitle
+
+        Exit Function
+
+error_handler:
+
+        Messagebox "Unexpected error:" + Error, 48, DialogTitle
+        Exit Function
+
+    End Function
+
+
+    Private Function OpenDominoDirectory () As Boolean
+
+        If ("" = m_DomainAdminServer) Then
+            Exit Function
+        End If
+
+        If (m_DomDirDb Is Nothing) Then
+            Set m_DomDirDb = New NotesDatabase (GetFinalUserName (m_DomainAdminServer), "names.nsf")
+        End If
+
+        If (m_DomDirDb.IsOpen) Then
+            OpenDominoDirectory = True
+        Else
+            OpenDominoDirectory = False
+        End If
+
+    End Function
+
+
+    Private Function OpenCertstoreDatabase () As Boolean
+
+        If ("" = m_CertMgrServer) Then
+            Exit Function
+        End If
+
+        If (m_CertstoreDb Is Nothing) Then
+            Set m_CertstoreDb = New NotesDatabase (GetFinalUserName (m_CertMgrServer), "certstore.nsf")
+        End If
+
+        If (m_CertstoreDb.IsOpen) Then
+            OpenCertstoreDatabase = True
+        Else
+            OpenCertstoreDatabase = False
+        End If
+
+    End Function
+
+    Private Sub LogMsg (szMessage As String)
+
+        If (0 = m_LogLevel) Then
+            Exit Sub
+        End If
+
+        Messagebox szMessage
+
+    End Sub
+
+    Private Function ConvertUserName (UserName As String) As String
+
+        Dim nam As NotesName
+
+        ConvertUserName = ""
+        If ("" = UserName) Then
+            Exit Function
+        End If
+
+        Set nam = New NotesName ( (UserName))
+        ConvertUserName = Lcase (nam.Abbreviated)
+
+    End Function
+
+
+    Private Function IsSameName (FirstUser As String, SecondUser As String)
+
+        Dim A As String
+        Dim B As String
+
+        A = ConvertUserName (FirstUser)
+        B = ConvertUserName (SecondUser)
+
+        If (A = B) Then
+            IsSameName = True
+        Else
+            IsSameName = False
+        End If
+
+    End Function
+
+
+    Private Function GetFinalUserName (UserName As String) As String
+
+        If (IsSameName (m_CurrentUser, UserName)    ) Then
+            GetFinalUserName = ""
+        Else
+            GetFinalUserName = UserName
+        End If
+
+    End Function
+
+
+    Function DeleteFieldsWithPrefix (doc As NotesDocument, prefix As String) As Long
+
+        Dim formula As String
+        Dim FieldName As String
+        Dim result As Variant
+        Dim count As Long
+
+        If (m_bEnableErrorHandler) Then On Error Goto error_handler
+
+        prefix = Lcase$(prefix)
+        formula = |@Transform(@DocFields; "x"; @If(@Begins(@LowerCase(x); "| & prefix & |"); x; @Nothing))|
+        result = Evaluate(formula,doc)
+
+        count = 0
+        Forall x In result
+            FieldName = Cstr(x)
+            If ("" <> FieldName) Then
+                Call doc.RemoveItem(FieldName)
+                count = count + 1
+            End If
+        End Forall
+
+        DeleteFieldsWithPrefix = count
+
+        Exit Function
+
+error_handler:
+
+        LogError "Unexpected error occurred when deleting fields - " + Error()
+
+        Exit Function
+
+    End Function
+
+
+    Sub LogError (X As String)
+        m_ErrorString = X
+        LogMsg "Error: " + X
+    End Sub
+
+
+    Sub ResetError ()
+        m_ErrorString = ""
+    End Sub
+
+
+    Private Function PromptForUserInput (szPrompt As String, szTitle As String, szDefault As String, bAllowInput As Boolean) As String
+
+        PromptForUserInput = szDefault
+
+        If (bAllowInput) Then
+            PromptForUserInput = Inputbox$ (szPrompt, szTitle, szDefault)
+        Else
+            Messagebox szDefault, 64, szTitle
+            PromptForUserInput = szDefault
+        End If
+
+    End Function
+
+    Function CAPI_CertStoreImportExport (ActionFlag As Integer, OptionBits As Integer, Doc As NotesDocument, CertMgrServerName As String, ServerWithAccess As String, FilePath As String, CurrentPassword As String, NewPassword As String, FriendlyName As String) As Integer
+        Dim RC As Integer
+        Dim hNote As Long
+
+        On Error Goto error_handler
+
+        ' Pass NULLHANDLE when document is nothing
+        If (doc Is Nothing) Then
+            hNote =  0
+        Else
+            hNote =  Doc.Handle
+        End If
+
+        If (m_IsWindows) Then
+
+            RC = WIN_CertStoreTLSImportExport (ActionFlag, OptionBits, hNote, CertMgrServerName+Chr(0), ServerWithAccess+Chr(0), FilePath+Chr(0), CurrentPassword+Chr(0), NewPassword+Chr(0), FriendlyName+Chr(0))
+
+        Elseif m_IsLinux Then
+            RC = LUX_CertStoreTLSImportExport (ActionFlag, OptionBits,hNote, CertMgrServerName+Chr(0), ServerWithAccess+Chr(0), FilePath+Chr(0), CurrentPassword+Chr(0), NewPassword+Chr(0), FriendlyName+Chr(0))
+
+        Elseif m_IsMac Then
+            RC = MAC_CertStoreTLSImportExport (ActionFlag, OptionBits, hNote, CertMgrServerName+Chr(0), ServerWithAccess+Chr(0), FilePath+Chr(0), CurrentPassword+Chr(0), NewPassword+Chr(0), FriendlyName+Chr(0))
+
+        Else
+            RC = 1
+
+        End If
+
+        CAPI_CertStoreImportExport = RC
+
+        Exit Function
+
+error_handler:
+
+        RC = 1
+
+        CAPI_CertStoreImportExport = RC
+        Exit Function
+
+    End Function
+
+
+    Function CertStoreCreateExportableKey (doc As NotesDocument, ExportPassword As String) As String
+
+        Dim Action As Integer
+        Dim OptionBits As Integer
+        Dim RC As Integer
+
+        On Error Goto error_handler
+
+        If (doc Is Nothing) Then
+            Exit Function
+        End If
+
+        OptionBits = 0
+
+        ' Assume generic error until overwritten
+        CertStoreCreateExportableKey = "Cannot create exportable Key"
+
+        Action = 2
+
+        RC = CAPI_CertStoreImportExport (Action, OptionBits, doc, "", "", "", ExportPassword, "", "")
+
+        If (RC) Then
+            CertStoreCreateExportableKey = "Cannot create exportable Key - RC: " + Cstr (RC)
+            Exit Function
+        End If
+
+        CertStoreCreateExportableKey = ""
+
+        Exit Function
+
+error_handler:
+
+        Exit Function
+
+    End Function
+
+
+    Function CertStoreImport (doc As NotesDocument, ImportFilePath As String, CurrentPassword As String, ExportPassword As String) As String
+
+        Dim Action As Integer
+        Dim OptionBits As Integer
+        Dim RC As Integer
+
+        On Error Goto error_handler
+
+        ' Assume generic error until overwritten
+        CertStoreImport = "Cannot import TLS Credentials"
+
+        If ("" = ImportFilePath) Then
+
+            ' If exportable private key is available the backend can use his key
+            If ("" = doc.PrivateKeyExportable(0)) Then
+                CertStoreImport = "No import file specified"
+                Exit Function
+            End If
+        End If
+
+        OptionBits = 0
+
+        If ("" = ExportPassword) Then
+            Action = 1
+        Else
+            Action = 3
+        End If
+
+        RC = CAPI_CertStoreImportExport (Action, OptionBits, doc, "", "", ImportFilePath, CurrentPassword, ExportPassword, "")
+
+        If (RC) Then
+            CertStoreImport  = "Cannot import TLS Credentials - RC: " + Cstr (RC)
+            Exit Function
+        End If
+
+        CertStoreImport = ""
+
+        Exit Function
+
+error_handler:
+
+        CertStoreImport = "Cannot import TLS Credentials: " + Error
+
+        Exit Function
+
+    End Function
+
+
+    Function CertStoreExport (doc As NotesDocument, ExportFilePath As String, CurrentPassword As String, ExportPassword As String) As String
+
+        Dim ExportFriendlyName As String
+
+        Dim Action As Integer
+        Dim OptionBits As Integer
+        Dim RC As Integer
+
+        On Error Goto error_handler
+
+        If ("" = ExportFilePath) Then
+            CertStoreExport = "No export file specified"
+            Exit Function
+        End If
+
+        If ("" = ExportPassword) Then
+            CertStoreExport = "No export password specified"
+            Exit Function
+        End If
+
+        If ("" = CurrentPassword) Then
+            CertStoreExport = "No password specified"
+            Exit Function
+        End If
+
+        If (doc Is Nothing) Then
+            CertStoreExport = "No document specified"
+            Exit Function
+        End If
+
+        If ("" = doc.PrivateKeyExportable(0) ) Then
+            CertStoreExport = "No exportable key found"
+            Exit Function
+        End If
+
+        ExportFriendlyName = ""
+        OptionBits = 0
+
+        ' Assume generic error until overwritten
+        CertStoreExport = "Cannot export TLS Credentials"
+
+        Action = 4
+
+        RC = CAPI_CertStoreImportExport (Action, OptionBits, doc, "", "", ExportFilePath, CurrentPassword, ExportPassword, ExportFriendlyName)
+
+        If (RC) Then
+            CertStoreExport = "Cannot export TLS Credentials - RC: " + Cstr (RC)
+            Exit Function
+        End If
+
+        CertStoreExport = ""
+        Exit Function
+
+error_handler:
+
+        Exit Function
+
+    End Function
+
+
+    Function WriteStringToFile (FileName As String, Buffer As String) As String
+
+        Dim FileStream  As NotesStream
+        Set FileStream = m_Session.CreateStream
+
+        On Error Goto error_handler
+
+        If FileStream.Open (FileName, "UTF-8") Then
+            Call FileStream.Truncate
+        Else
+            WriteStringToFile = "Cannot create file"
+            Exit Function
+        End If
+
+        FileStream.Writetext Buffer, EOL_CRLF
+        Call FileStream.Close
+
+        Exit Function
+
+error_handler:
+
+        WriteStringToFile = Error()
+
+        Exit Function
+
+    End Function
+
+
+    Function CertStoreKeyFileInit (doc As NotesDocument)
+
+        doc.Form = "KeyFile"
+        Call doc.Computewithform(False, False)
+
+    End Function
+
+    Function CertStoreKeyFileCreate () As NotesDocument
+
+        Call OpenCertstoreDatabase()
+        Set  CertStoreKeyFileCreate = New NotesDocument (m_CertStoreDb)
+        Call CertStoreKeyFileInit (CertStoreKeyFileCreate)
+
+    End Function
+
+
+    Function CreateCertificateForPemKey (doc As NotesDocument, PrivateKeyPEM As String, Password As String, HostName As String, ReqValidityPeriod As Long,ExportFileName As String) As String
+
+        Dim TmpFile As String
+        Dim ErrorText As String
+        Dim unid As String
+        Dim db As NotesDatabase
+        Dim count As Long
+        Dim MaxSeonds As Long
+        Dim KeyFileStatus As String
+
+        CreateCertificateForPemKey = ""
+
+        MaxSeonds = 60
+
+        Call CertStoreKeyFileInit (doc)
+
+        TmpFile = m_DataDirectory + m_DirSep + "dfm-certmgr-empty.tmp"
+
+        ' Write empty temp file to keep the backend API happy but write the encrypted key into the exportable key field to get picked up by import routine
+        Call WriteStringToFile (TmpFile, "")
+        doc.PrivateKeyExportable = PrivateKeyPEM
+
+        CreateCertificateForPemKey = CertStoreImport (Doc, TmpFile, Password, "")
+
+        Call DeleteIfExistsAndWait (TmpFile)
+
+        If ("" <> doc.ErrorMessage(0)) Then
+            CreateCertificateForPemKey = doc.ErrorMessage(0)
+            Exit Function
+        End If
+
+        Call SetHostnameList (doc, "HostName", HostName)
+
+        doc.Provider = "L"
+        doc.Status = "O"
+        doc.ReqValidityPeriod = ReqValidityPeriod
+        Call doc.Save(True, False)
+
+        CreateCertificateForPemKey = doc.ErrorMessage(0)
+
+        If ("" <> CreateCertificateForPemKey) Then
+            Exit Function
+        End If
+
+        If ("" = ExportFileName) Then
+            Exit Function
+        End If
+
+        While (count < MaxSeonds)
+
+            Sleep 1
+
+            unid = doc.UniversalID
+            Set db = doc.ParentDatabase
+            Set doc = Nothing
+            Set doc = db.GetDocumentByUNID(unid)
+
+            KeyFileStatus = doc.Status(0)
+
+            If (KeyFileStatus <> "O") Then
+
+                If (KeyFileStatus = "I") Then
+                    Call WriteStringToFile (ExportFileName, doc.KeyChain(0))
+                Else
+                    CreateCertificateForPemKey = doc.ErrorMessage(0)
+                End If
+
+                Exit Function
+
+            End If
+
+            count = count - 1
+
+        Wend
+
+
+    End Function
+
+    Sub DeleteIfExistsAndWait (path As String)
+
+        Dim i As Integer
+
+        If Dir$(path) = "" Then
+            Exit Sub
+        End If
+
+        On Error Resume Next
+        Kill path
+        On Error Goto 0
+
+        For i = 1 To 20   ' ~2 seconds max
+            If Dir$(path) = "" Then
+                Exit Sub
+            End If
+
+            On Error Resume Next
+            Kill path
+            On Error Goto 0
+
+            Sleep 1
+        Next
+
+        Error 1001, "File could not be deleted: " & path
+
+    End Sub
+
+
+    Sub SetHostnameList(doc As NotesDocument, ItemName As String, HostNamesCommaSeparated As String )
+
+        Dim raw As Variant
+        Dim result() As String
+        Dim seen List As Boolean
+        Dim i As Integer
+        Dim count As Integer
+        Dim h As String
+
+        raw = Split(HostNamesCommaSeparated, ",")
+        count = -1
+
+        For i = Lbound(raw) To Ubound(raw)
+
+            h = Lcase$(Trim$(raw(i)))
+
+        ' Remove trailing dot (FQDN like example.com.)
+            If Len(h) > 0 Then
+                If Right$(h, 1) = "." Then
+                    h = Left$(h, Len(h) - 1)
+                End If
+            End If
+
+        ' Skip empty entries
+            If h <> "" Then
+
+            ' Remove duplicates
+                If Not Iselement(seen(h)) Then
+                    seen(h) = True
+
+                    count = count + 1
+                    Redim Preserve result(count)
+                    result(count) = h
+                End If
+
+            End If
+
+        Next
+
+    ' Replace or remove item
+        If count >= 0 Then
+            Call doc.ReplaceItemValue(ItemName, result)
+        Else
+            Call doc.RemoveItem(ItemName)
+        End If
+
+    End Sub
+
+    Function CreateTrustedRootForMicroCA (doc As NotesDocument) As Long
+
+        ' 0 = Error
+        ' 1 = Already exists
+        ' 2 = Created
+
+        Dim db As NotesDatabase
+        Dim view As NotesView
+        Dim KeyChain As String
+        Dim KeyIdentifier As String
+
+        KeyChain = doc.KeyChain(0)
+
+        If (KeyChain = "") Then
+            Exit Function
+        End If
+
+        Set db = doc.ParentDatabase
+        Set view = db.GetView ("(TrustedRootLookup)")
+
+        KeyIdentifier = doc.KeyIdentifier(0)
+
+        Set doc = view.GetDocumentByKey (KeyIdentifier, True)
+
+        If (Not doc Is Nothing) Then
+            CreateTrustedRootForMicroCA = 1
+            Exit Function
+        End If
+
+        Set doc = New NotesDocument(db)
+
+        doc.Form = "Certifier"
+        doc.Type = "Certifier"
+        doc.KeyIdentifier = KeyIdentifier
+        doc.Status = "O"
+        doc.PastedPem = KeyChain
+
+        Call doc.ComputeWithForm(False, 0)
+        Call doc.Save(True, False)
+
+        CreateTrustedRootForMicroCA = 2
+
+    End Function
+
+End Class
+
