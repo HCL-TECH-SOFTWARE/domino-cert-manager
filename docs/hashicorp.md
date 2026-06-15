@@ -109,7 +109,7 @@ Function HashiCorpReqeust (URL As String, Token As String, doc As NotesDocument)
             End If
         End If
 
-    ' User only Intermediate
+    ' Use only intermediate certificate
     Else
         CertPEM = e.Value
         Set e = JsonNav.GetElementByPointer ("/data/issuing_ca")
