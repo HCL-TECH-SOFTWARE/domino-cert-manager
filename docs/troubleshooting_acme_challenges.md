@@ -7,7 +7,18 @@ description: "Troubleshooting ACME HTTP-01 Challenges"
 has_children: false
 ---
 
-# Troubleshooting ACME HTTP-01 challenges
+<h1>Troubleshooting ACME HTTP-01 Challenges</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
 
 ## Verify requirements
 

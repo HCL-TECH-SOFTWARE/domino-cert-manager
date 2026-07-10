@@ -7,6 +7,20 @@ description: "ECDSA keys & certificates"
 has_children: false
 ---
 
+<h1>ECDSA Support</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
+## ECDSA
 
 [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm) cryptography is a more modern type of key and certificate.
 Domino 12.0 fully supports ECDSA for Domino web server certificates in parallel to RSA technology.

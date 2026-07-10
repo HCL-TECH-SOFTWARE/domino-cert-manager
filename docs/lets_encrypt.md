@@ -7,6 +7,19 @@ description: "Expired Let's Encrypt DST Root CA X3"
 has_children: false
 ---
 
+<h1>Expired Let's Encrypt DST Root CA X3</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
 # Expired Let's Encrypt DST Root CA X3
 
 ## Introduction

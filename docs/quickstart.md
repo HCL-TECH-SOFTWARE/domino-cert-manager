@@ -6,7 +6,19 @@ description: "CertMgr Quickstart"
 has_children: false
 ---
 
-CertMgr is available since Domino 12.0. Domino 12.0.2 is the recommended Domino release. To get started with CertMgr perform the following steps:
+<h1>CertMgr Quickstart</h1>
+CertMgr is available since Domino 12.0. Domino 12.0.2 is the recommended Domino release. To get started with CertMgr perform the following steps
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
 
 ## Select designated CertMgr server
 

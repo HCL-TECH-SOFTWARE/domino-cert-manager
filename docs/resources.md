@@ -6,6 +6,20 @@ description: "Links and Resources"
 has_children: false
 ---
 
+<h1>Resources</h1>
+List of useful resources
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
 ## HCL Domino 12.0.2 documentation
 
 Refere to the official HCL documentation for the full [Domino CertMgr reference documentation](https://help.hcltechsw.com/domino/12.0.2/admin/secu_le_using_certificate_manager.html).

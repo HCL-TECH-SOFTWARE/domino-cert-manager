@@ -7,6 +7,18 @@ parent: "Architecture"
 has_children: false
 ---
 
+<h1>Anatomy of TLS Credentials</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
 
 # Anatomy of a TLS Credentials document
 
@@ -79,13 +91,11 @@ Web browser vendors either leverage their local certificate store (for example F
 Depending on your environment a trusted root can be only added by an administrator. 
 
 
-
 ## TLS Credentials fields
 
 This section describes the fields used in TLS Credentials documents and might be important for a deeper understanding or in case of own integrations like automating the manual flow.
 The steps performed by an admin in the UI, can be also automated with for example a Lotus Script agent.
 Beside the private key, which needs to be protected, all other fields use text based formats.
-
 
 ### PrivateKey
 
@@ -124,7 +134,6 @@ A subject key identifier is an unique identifier used as the internal key to ref
 
 The status field controls CertMgr operations and triggers request processing.
 The following main states are used.
-
 
 | Value| Status     | Description |
 | -----| ---------- | ----------- |

@@ -7,6 +7,19 @@ description: "Deploying certificates outside Domino"
 has_children: false
 ---
 
+<h1>Deploying certificates outside Dominos</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
 # Deploying certificates outside Domino
 
 As long Domino is your target application, key and certificate management is automated.  

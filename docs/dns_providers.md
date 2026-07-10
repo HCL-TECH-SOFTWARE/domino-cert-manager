@@ -7,11 +7,24 @@ description: "Available DNS provider integrations"
 has_children: false
 ---
 
+<h1>DNS provider integrations</h1>
+Describing which DNS providers are able to be integrated with the HCL Domino Certificate Manager
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
 The following DNS provider integrations are available.
 There is a separate directory containing the DXL files for each provider.
 Import the DXL file into certstore.nsf using the Action menu `Import DXL`.
 The imported document contains documentation for each provider.
-
 
 # Available DNS provider integrations
 

@@ -70,7 +70,7 @@ back_to_top_text: "Back to top"
 
 next_page: true
 
-footer_content: "HCL Domino Certificate Manager"
+footer_content: "Copyright &copy; 2023 HCLSoftware. Distributed as <a href=\"https://https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/license\">Apache 2.0 license.</a>"
 
 # Footer last edited timestamp
 # last_edit_timestamp: true # show or hide edit time - page must have `last_modified_date` defined in the frontmatter

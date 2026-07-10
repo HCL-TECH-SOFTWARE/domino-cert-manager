@@ -7,6 +7,19 @@ description: "Howto convert cert files from and to PEM"
 has_children: false
 ---
 
+<h1>Certificate formats</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
 # Certificate formats
 
 The most commonly two formats are PEM and PKCS12 today.

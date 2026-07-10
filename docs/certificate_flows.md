@@ -7,8 +7,20 @@ description: "CertMgr Certificate Flows"
 has_children: false
 ---
 
+<h1>CertMgr Certificate Flows</h1>
 
-# CertMgr Certificate Flows
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
+# Certificate Flows
 
 CertMgr is supports multiple certificate flows. The leveraged flow depends on the server environment.
 All type of certificates can be combined and offer the same type of operations like creating an exportable key.

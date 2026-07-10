@@ -7,6 +7,19 @@ description: "Trusted Roots"
 has_children: false
 ---
 
+<h1>Trusted Roots</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
+
 # Trusted Roots / Root CA Certs
 
 Trusted roots are technically certificates where the CA signs it own key. The certificate has also some special extensions set, like the CA attribute and SelfSigned.

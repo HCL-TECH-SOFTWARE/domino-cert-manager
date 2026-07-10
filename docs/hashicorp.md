@@ -7,6 +7,18 @@ description: "Lotus Script example to integrate CertMgr with HashiCorp as a CA"
 has_children: false
 ---
 
+<h1>Integration CertMgr with HashiCorp</h1>
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
 # Example Integration CertMgr with HashiCorp
 
 The following example shows how an external CA could be integrated leveraging the manual flow on Domino side.

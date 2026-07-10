@@ -6,6 +6,19 @@ description: "Frequently asked Questions"
 has_children: false
 ---
 
+<h1>FAQ</h1>
+Frequently asked questions
+
+<details close markdown="block">
+  <summary>
+    Table of contents
+  </summary>
+  {: .text-delta }
+1. TOC
+{:toc}
+</details>
+
+---
 
 # How are trusted roots used?
 
