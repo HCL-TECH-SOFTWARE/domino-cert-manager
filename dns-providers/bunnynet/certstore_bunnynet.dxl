@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_12_0.dtd'>
+
+<database xmlns='http://www.lotus.com/dxl' version='12.0' replicaid='002585970E81AAAA'
+ path='CN=led/O=Redwood-Lab!!certstore.nsf' title='Certificate Store' fromtemplate='StdCertificateStore'
+ maintainunread='false' increasemaxfields='true' copyprofiledocswithdesign='true'>
+<databaseinfo dbid='002585A600465F3A' odsversion='55' diskspace='4194304'
+ percentused='85.3271484375' numberofdocuments='66'><datamodified><datetime
+>20210613T041137,13+00</datetime></datamodified><designmodified><datetime
+>20210524T145326,24+00</datetime></designmodified></databaseinfo>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='40fe' unid='5BE891C82208B92E002586CC007311FB' sequence='1'>
+<created><datetime>20210505T205652,43+00</datetime></created>
+<modified><datetime>20210505T205652,71+00</datetime></modified>
+<revised><datetime>20210505T205652,70+00</datetime></revised>
+<lastaccessed><datetime>20210505T205652,70+00</datetime></lastaccessed>
+<addedtofile><datetime>20210505T205652,70+00</datetime></addedtofile></noteinfo>
+<textproperties>
+<textproperty propid='0' language='EN'/></textproperties>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run><span propid='0' regionid='1'><run
+><font size='9pt'/>The bunny.net integration uses the official bunny.net API.</run></span></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/></run></region></par>
+<par def='1'><region regionid='1'><run><font size='9pt'/>The configuration requires the </run><run
+><font size='9pt' style='bold'/>DNS Zone ID</run><run><font size='9pt'/> and </run><run
+><font size='9pt' style='bold'/>API access key</run><run><font size='9pt'/>.</run></region></par>
+<par def='1'><region regionid='1' end='true'><run><font size='9pt'/></run></region></par>
+<table minrowheight='0.2500in' cellbordercolor='#c6c6c6' leftmargin='0' widthtype='fixedleft'
+ rowspacing='0.0201in' refwidth='9.8431in'><tablecolumn width='1.9688in'/><tablecolumn
+ width='7.8743in'/>
+<tablerow>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='2' leftmargin='0.1201in' keepwithnext='true' keeptogether='true'/>
+<par def='2'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>DNS Zone:</run></par></tablecell>
+<tablecell valign='center' borderwidth='0px 0px 1px' bgcolor='white'>
+<pardef id='3' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='3'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='green'/>my-dns-zone-id</run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='2'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Username:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<pardef id='4' leftmargin='0' rightmargin='7.8063in' keepwithnext='true' keeptogether='true'/>
+<par def='4'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='2'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>email Address:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='maroon'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='2'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Password:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='3'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></tablecell></tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='2'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Authorization Key:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px 0px' bgcolor='white'>
+<par def='3'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='green'/>my-api-key</run></par></tablecell>
+</tablerow>
+<tablerow>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='2'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/>Authorization Token:</run></par></tablecell>
+<tablecell valign='center' borderwidth='1px 0px' bgcolor='white'>
+<par def='4'><run><font size='9pt' style='bold' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20' color='navy'/></run></par></tablecell>
+</tablerow></table>
+<par def='1'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>45</number></item>
+<item name='EnableTracing'><text>2</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text/></item>
+<item name='ReqAddHttpType'><text>U</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text>D</text></item>
+<item name='Comments'><richtext>
+<pardef id='5' keepwithnext='true' keeptogether='true'><code event='hidewhen'
+ enabled='false'><formula>FP_Server_Scope = "1"</formula></code></pardef>
+<par def='5'><run><font size='9pt' name='Helvetica Neue' pitch='variable'
+ truetype='false' familyid='20'/></run></par></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text
+>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>bunny.net</text></item>
+<item name='ProviderName'><text>BunnyWay d.o.o</text></item>
+<item name='Website'><text>https://www.bunny.net</text></item>
+<item name='DocumentationURL'><text>https://docs.bunny.net/api-reference/core/dns-zone/</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>Shaun Ewing</text></item>
+<item name='ReferenceURL'><text/></item>
+<item name='StatusFormula'><text>@if (ret_AddStatus = 201; 200; 400)</text></item>
+<item name='cfg_URL'><text>https://api.bunny.net/</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text/></item>
+<item name='ReqQryAddHeaderFormula'><text/></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>cfg_URL + "/dnszone/" + cfg_DnsZone + "/records"</text></item>
+<item name='ReqAddHeaderFormula'><text>("AccessKey: " + cfg_AuthKey ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqAddPostDataFormula'><text>txtName := @If(@Ends(param_DnsTxtName; "." + param_RegisteredDomain); @Left(param_DnsTxtName; "." + param_RegisteredDomain); param_DnsTxtName);<break
+/>'{"Name":"' + txtName + '","Type":3,"Ttl":60,"Value": "' + param_DnsTxtValue +'","Comment":"Created by Domino CertMgr"}'</text></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text>ID_TXT:= @Text(retJSON_Add.Id); @if (ID_TXT= ""; ""; cfg_URL + "/dnszone/" + cfg_DnsZone + "/records/" + ID_TXT)</text></item>
+<item name='ReqDelHeaderFormula'><text>("AccessKey: " + cfg_AuthKey ) : ( "Content-Type: application/json" )</text></item>
+<item name='ReqDelPostDataFormula'><text/></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentAddName'><text/></item>
+<item name='AgentDelName'><text/></item></document>
+</database>
