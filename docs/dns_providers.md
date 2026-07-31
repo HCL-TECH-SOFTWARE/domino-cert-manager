@@ -28,6 +28,36 @@ The imported document contains documentation for each provider.
 
 # Available DNS provider integrations
 
+## ACME-DNS
+
+[ACME-DNS](https://github.com/joohoi/acme-dns) is an open source project providing an open source based ACME optimized DNS server
+
+### Main features
+
+- DNS designed for serving TXT records only for a validation subdomain
+- REST based DNS TXT interface
+- Intended for self-hosting in combination with DNS CNAME delegation for your existing domains
+- Ready to go Docker image
+
+[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/acmedns/certstore_acmedns.dxl)
+
+
+## bunny.net
+
+[bunny.net](https://bunny.net) is a European content delivery network and web infrastructure provider that provides DNS hosting with a [DNS-API](https://bunny.net/docs/api-reference/). 
+
+DNS hosting is free up to 500 zones however each account has a minimum monthly spend of US$1 after the free trial.
+
+### Main features
+
+- DNS service
+- DNSSEC support
+- REST based DNS TXT interface
+- 2FA for secure admin interface authentication
+- Records can be configured with latency/location based routing, weighting, and health checks which can be used to automatically failover your Domino/SafeLinx/Traveler "sprayer" hostnames in the event of a service issue.
+
+[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/bunnynet/certstore_bunnynet.dxl)
+
 
 ## Cloudflare
 
@@ -43,6 +73,23 @@ The imported document contains documentation for each provider.
 [Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/cloudflare/certstore_cloudflare.dxl)
 
 
+## deSEC e.V.
+
+[deSec](https://desec.io) is a free service provided by a registered non-profit organization based in Germany
+
+### Main features
+
+- DNS provider including modern DNS security features for a dedicated or a Dyn DNS domain
+- REST based DNS TXT interface
+- Can be used for dynamic DNS for dial-up IP addresses (mainly for testing)
+- DNS entries can be specified via graphical interface or REST based DNS API
+
+This project is specially interesting for admins starting with DNS-01 challenges.  
+The configuration can be used from any server with outbound HTTPS connections.  
+For home use with a dynamic IP also HTTP-01 challenges should work.
+
+[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/desec/certstore_desec.dxl)
+
 
 ## Digital Ocean
 
@@ -50,22 +97,22 @@ The imported document contains documentation for each provider.
 
 ### Main features
 
-- DNS service registered domains and sub domains
+- DNS service registered domains and subdomains
 - REST based DNS TXT interface
 - 2FA for secure admin interface authentication
 
-This service is very helpful in case you have an existing internet domain and want to delegate a sub domain to a provider with DNS TXT record API integration.  
+This service is very helpful in case you have an existing internet domain and want to delegate a subdomain to a provider with DNS TXT record API integration.  
 It works in combination with CNAME validation for domains hosted at a different provider
 
 [Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/digitalocean/certstore_digitalocean.dxl)
 
 
-
 ## Hetzner
 
 [Hetzner](https://www.hetzner.com/) is a German based internet service provider providing free DNS services with a [DNS-API](https://docs.hetzner.cloud/reference/hetzner).
+
 Starting November 2025 Hetzner moved their DNS interface to the [Cloud console](https://console.hetzner.com).
-This update makes it possible to manage DNS domains in separate projects cloud use spearate API tokens per project.
+This update makes it possible to manage DNS domains in separate projects with per-project API tokens.
 
 Until moved to the new console continue to use the existing legacy API.
 As soon a DNS domain is migrated, the new API is required.
@@ -87,48 +134,10 @@ As soon a DNS domain is migrated, the new API is required.
 
 - DNS service
 - REST based DNS TXT interface
-- Allows sub domain DNS services
+- Allows subdomain DNS services
 - Support for DNSSEC
 
-
 [Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/ionos_cloud/certstore_ionos_cloud.dxl)
-
-
-
-## ACME-DNS
-
-[ACME-DNS](https://github.com/joohoi/acme-dns) is an open source project providing an open source based ACME optimized DNS server
-
-### Main features
-
-- DNS designed for serving TXT records only for a validation sub domain
-- REST based DNS TXT interface
-- Intended for self hosting in combination with DNS CNAME delegation for your existing domains
-- Ready to go Docker image
-
-
-[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/acmedns/certstore_acmedns.dxl)
-
-
-
-## deSEC e.V.
-
-[deSec](https://desec.io) is a free service provided by a registered non-profit organization based in Germany
-
-### Main features
-
-- DNS provider including modern DNS security features for a dedicated or a Dyn DNS domain
-- REST based DNS TXT interface
-- Can be used for dynamic DNS for dial-up IP addresses (mainly for testing)
-- DNS entries can be specified via graphical interface or REST based DNS API
-
-This project is specially interesting for admins startin with DNS-01 challenges.  
-The configuration can be used from any server with outbound HTTPS connections.  
-For home use with a dynamic IP also HTTP-01 challges should work.  
-
-
-[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/desec/certstore_desec.dxl)
-
 
 
 ## Support
