@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE database SYSTEM 'xmlschemas/domino_12_0.dtd'>
+<database xmlns='http://www.lotus.com/dxl' version='12.0' replicaid='002585970E81AAAA'
+ path='certstore.nsf' title='Certificate Store' fromtemplate='StdCertificateStore'
+ maintainunread='false' increasemaxfields='true' copyprofiledocswithdesign='true'>
+<databaseinfo dbid='002585A600465F3A' odsversion='55' diskspace='4194304'
+ percentused='85.3271484375' numberofdocuments='66'><datamodified><datetime
+>20260810T105600,00+03</datetime></datamodified><designmodified><datetime
+>20260810T105600,00+03</datetime></designmodified></databaseinfo>
+<launchsettings><noteslaunch whenopened='openframeset' frameset='MainFrameset'/></launchsettings>
+<document form='DnsProviderConfig'>
+<noteinfo noteid='4086' unid='C10D46A19F20260810AA010100000001' sequence='1'>
+<created><datetime>20260810T105600,00+03</datetime></created>
+<modified><datetime>20260810T105600,00+03</datetime></modified>
+<revised><datetime>20260810T105600,00+03</datetime></revised>
+<lastaccessed><datetime>20260810T105600,00+03</datetime></lastaccessed>
+<addedtofile><datetime>20260810T105600,00+03</datetime></addedtofile></noteinfo>
+<textproperties><textproperty propid='0' language='EN'/></textproperties>
+<item name='Log'><text/></item>
+<item name='Status'><text/></item>
+<item name='Body'><richtext>
+<pardef id='1' leftmargin='0' keepwithnext='true' keeptogether='true'/>
+<par def='1'><run><font size='9pt'/>ClouDNS.net DNS-01 integration for Domino CertMgr.</run></par>
+<par def='1'><run><font size='9pt'/>After import set Registered Domain to your ClouDNS zone, Authorization Key to the ClouDNS sub-auth-id, and Authorization Token to the ClouDNS sub-user password.</run></par>
+</richtext></item>
+<item name='DnsProviderType'><text>H</text></item>
+<item name='cfg_DnsProviderDelay'><number>90</number></item>
+<item name='EnableTracing'><text>2</text></item>
+<item name='ReqLookupHttpType'><text/></item>
+<item name='ReqQryAddHttpType'><text/></item>
+<item name='ReqAddHttpType'><text>P</text></item>
+<item name='ReqQryDelHttpType'><text/></item>
+<item name='ReqDelHttpType'><text>P</text></item>
+<item name='Comments'><richtext><pardef id='2'/><par def='2'/></richtext></item>
+<item name='AdminAccess' authors='true' names='true' protected='true'><text>[Administrator]</text></item>
+<item name='DnsProviderConfigName'><text>ClouDNS.net</text></item>
+<item name='ProviderName'><text>ClouDNS.net</text></item>
+<item name='Website'><text>https://www.cloudns.net</text></item>
+<item name='DocumentationURL'><text>https://www.cloudns.net/wiki/article/42/</text></item>
+<item name='Version'><text>1.0</text></item>
+<item name='Author'><text>Domino community</text></item>
+<item name='ReferenceURL'><text>https://www.cloudns.net/wiki/article/58/</text></item>
+<item name='StatusFormula'><text>@if (retJSON_Add.status = "Success"; 200; 400)</text></item>
+<item name='cfg_URL'><text>https://api.cloudns.net/dns</text></item>
+<item name='ReqLookupUrlFormula'><text/></item>
+<item name='ReqLookupHeaderFormula'><text/></item>
+<item name='ReqLookupPostDataFormula'><text/></item>
+<item name='ReqLookupCustomFormula'><text/></item>
+<item name='ReqQryAddUrlFormula'><text/></item>
+<item name='ReqQryAddHeaderFormula'><text/></item>
+<item name='ReqQryAddPostDataFormula'><text/></item>
+<item name='ReqAddUrlFormula'><text>cfg_URL + "/add-record.json"</text></item>
+<item name='ReqAddHeaderFormula'><text>"Content-Type: application/x-www-form-urlencoded"</text></item>
+<item name='ReqAddPostDataFormula'><text>FIELD param_host := @If(@Ends(param_DnsTxtName; "." + param_RegisteredDomain); @Left(param_DnsTxtName; "." + param_RegisteredDomain); param_DnsTxtName);<break
+/><break/>"sub-auth-id=" + @URLEncode("Domino"; cfg_AuthKey) + "&amp;auth-password=" + @URLEncode("Domino"; cfg_AuthToken) + "&amp;domain-name=" + @URLEncode("Domino"; param_RegisteredDomain) + "&amp;type=TXT&amp;host=" + @URLEncode("Domino"; param_host) + "&amp;record=" + @URLEncode("Domino"; param_DnsTxtValue) + "&amp;ttl=60"</text></item>
+<item name='ReqQryDelUrlFormula'><text/></item>
+<item name='ReqQryDelHeaderFormula'><text/></item>
+<item name='ReqQryDelPostDataFormula'><text/></item>
+<item name='ReqDelUrlFormula'><text>ID_TXT := @Text(retJSON_Add.data.id); @If(ID_TXT = ""; ""; cfg_URL + "/delete-record.json")</text></item>
+<item name='ReqDelHeaderFormula'><text>"Content-Type: application/x-www-form-urlencoded"</text></item>
+<item name='ReqDelPostDataFormula'><text>ID_TXT := @Text(retJSON_Add.data.id); @If(ID_TXT = ""; ""; "sub-auth-id=" + @URLEncode("Domino"; cfg_AuthKey) + "&amp;auth-password=" + @URLEncode("Domino"; cfg_AuthToken) + "&amp;domain-name=" + @URLEncode("Domino"; param_RegisteredDomain) + "&amp;record-id=" + ID_TXT)</text></item>
+<item name='CommandAddFormula'><text/></item>
+<item name='CommandDelFormula'><text/></item>
+<item name='CommandEnvFormula'><text/></item>
+<item name='AgentDatabase'><text/></item>
+<item name='AgentNameAdd'><text/></item>
+<item name='AgentNameDel'><text/></item>
+</document>
+</database>

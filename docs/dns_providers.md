@@ -73,6 +73,22 @@ DNS hosting is free up to 500 zones however each account has a minimum monthly s
 [Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/cloudflare/certstore_cloudflare.dxl)
 
 
+## ClouDNS.net
+
+[ClouDNS.net](https://www.cloudns.net) provides DNS hosting with a [DNS API](https://www.cloudns.net/wiki/article/42/).
+
+### Main features
+
+- DNS service
+- REST based DNS TXT interface
+- API sub-users with read/write access
+- DNSSEC support
+
+The configuration uses a ClouDNS API sub-user. Configure the API sub-user ID in the Authorization Key field and the API sub-user password in the Authorization Token field.
+
+[Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/cloudns/certstore_cloudns.dxl)
+
+
 ## deSEC e.V.
 
 [deSec](https://desec.io) is a free service provided by a registered non-profit organization based in Germany
@@ -144,4 +160,3 @@ As soon a DNS domain is migrated, the new API is required.
 
 DNS provider configurations are maintained by the HCL Domino community on best-effort basis.
 Customers are requested to submit pull requests for other DNS providers they have created an integration for.
-
