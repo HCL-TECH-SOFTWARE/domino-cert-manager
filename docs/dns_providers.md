@@ -85,6 +85,7 @@ DNS hosting is free up to 500 zones however each account has a minimum monthly s
 - DNSSEC support
 
 The configuration uses a ClouDNS API sub-user. Configure the API sub-user ID in the Authorization Key field and the API sub-user password in the Authorization Token field.
+If the registered domain is a host name or sub-domain, configure the DNS Zone field with the ClouDNS zone name.
 
 [Download DXL](https://github.com/HCL-TECH-SOFTWARE/domino-cert-manager/blob/main/dns-providers/cloudns/certstore_cloudns.dxl)
 

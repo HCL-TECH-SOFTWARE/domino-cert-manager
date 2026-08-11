@@ -51,14 +51,15 @@
 <item name='ReqQryAddPostDataFormula'><text/></item>
 <item name='ReqAddUrlFormula'><text>cfg_URL + "/add-record.json"</text></item>
 <item name='ReqAddHeaderFormula'><text>"Content-Type: application/x-www-form-urlencoded"</text></item>
-<item name='ReqAddPostDataFormula'><text>FIELD param_host := @If(@Ends(param_DnsTxtName; "." + param_RegisteredDomain); @Left(param_DnsTxtName; "." + param_RegisteredDomain); param_DnsTxtName);<break
-/><break/>"sub-auth-id=" + @URLEncode("Domino"; cfg_AuthKey) + "&amp;auth-password=" + @URLEncode("Domino"; cfg_AuthToken) + "&amp;domain-name=" + @URLEncode("Domino"; param_RegisteredDomain) + "&amp;type=TXT&amp;host=" + @URLEncode("Domino"; param_host) + "&amp;record=" + @URLEncode("Domino"; param_DnsTxtValue) + "&amp;ttl=60"</text></item>
+<item name='ReqAddPostDataFormula'><text>FIELD param_domain := @If(cfg_DnsZone = ""; param_RegisteredDomain; cfg_DnsZone);<break
+/>FIELD param_host := @If(@Ends(param_DnsTxtName; "." + param_domain); @Left(param_DnsTxtName; "." + param_domain); param_DnsTxtName);<break
+/><break/>"sub-auth-id=" + @URLEncode("Domino"; cfg_AuthKey) + "&amp;auth-password=" + @URLEncode("Domino"; cfg_AuthToken) + "&amp;domain-name=" + @URLEncode("Domino"; param_domain) + "&amp;type=TXT&amp;host=" + @URLEncode("Domino"; param_host) + "&amp;record=" + @URLEncode("Domino"; param_DnsTxtValue) + "&amp;ttl=60"</text></item>
 <item name='ReqQryDelUrlFormula'><text/></item>
 <item name='ReqQryDelHeaderFormula'><text/></item>
 <item name='ReqQryDelPostDataFormula'><text/></item>
 <item name='ReqDelUrlFormula'><text>ID_TXT := @Text(retJSON_Add.data.id); @If(ID_TXT = ""; ""; cfg_URL + "/delete-record.json")</text></item>
 <item name='ReqDelHeaderFormula'><text>"Content-Type: application/x-www-form-urlencoded"</text></item>
-<item name='ReqDelPostDataFormula'><text>ID_TXT := @Text(retJSON_Add.data.id); @If(ID_TXT = ""; ""; "sub-auth-id=" + @URLEncode("Domino"; cfg_AuthKey) + "&amp;auth-password=" + @URLEncode("Domino"; cfg_AuthToken) + "&amp;domain-name=" + @URLEncode("Domino"; param_RegisteredDomain) + "&amp;record-id=" + ID_TXT)</text></item>
+<item name='ReqDelPostDataFormula'><text>ID_TXT := @Text(retJSON_Add.data.id); param_domain := @If(cfg_DnsZone = ""; param_RegisteredDomain; cfg_DnsZone); @If(ID_TXT = ""; ""; "sub-auth-id=" + @URLEncode("Domino"; cfg_AuthKey) + "&amp;auth-password=" + @URLEncode("Domino"; cfg_AuthToken) + "&amp;domain-name=" + @URLEncode("Domino"; param_domain) + "&amp;record-id=" + ID_TXT)</text></item>
 <item name='CommandAddFormula'><text/></item>
 <item name='CommandDelFormula'><text/></item>
 <item name='CommandEnvFormula'><text/></item>
